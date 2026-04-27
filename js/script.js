@@ -400,18 +400,53 @@ function renderServiceButtons() {
     </button>
   `).join('');
 }
-
 function selectQService(svcId) {
   APP.quote.svcId   = svcId;
   APP.quote.subId   = null;
   APP.quote.answers = {};
   APP.quote.base    = 0;
   APP.quote.options = 0;
+
   renderServiceButtons();
   renderQuoteService(svcId, true);
   setStepActive(1);
-}
 
+  // ✅ FIX + LOCK dans contact form
+  syncAndLockContactService(svcId);
+}
+function syncAndLockContactService(svcId, subId = null) {
+  const cSvc = document.getElementById('c-svc');
+  const cSub = document.getElementById('c-sub');
+  const wrap = document.getElementById('c-sub-wrap');
+
+  if (!APP.services?.services) return;
+
+  // ── SERVICE ──
+  if (cSvc) {
+    cSvc.value = svcId;
+
+    // 🔒 LOCK SERVICE (empêche changement)
+    cSvc.disabled = true;
+    cSvc.style.opacity = "0.7";
+    cSvc.style.pointerEvents = "none";
+
+    buildContactSubSelect(svcId);
+  }
+
+  // ── SUB SERVICE ──
+  if (subId && cSub) {
+    setTimeout(() => {
+      cSub.value = subId;
+    }, 50);
+
+    if (wrap) wrap.classList.add('show');
+
+    // 🔒 LOCK SUB SERVICE aussi
+    cSub.disabled = true;
+    cSub.style.opacity = "0.7";
+    cSub.style.pointerEvents = "none";
+  }
+}
 function renderQuoteService(svcId, animate) {
   const svc = APP.services?.services?.find(s => s.id === svcId);
   if (!svc) return;
@@ -437,27 +472,43 @@ function renderQuoteService(svcId, animate) {
   const est = document.getElementById('estimate-box');
   if (est) est.style.display = 'none';
 }
-
 function selectSubService(svcId, subId) {
   APP.quote.subId   = subId;
   APP.quote.answers = {};
-  document.querySelectorAll('.sub-btn').forEach(b =>
-    b.classList.toggle('on', b.textContent.trim() ===
-      (APP.services.services.find(s=>s.id===svcId)?.subServices.find(ss=>ss.id===subId)?.label?.[APP.lang] ||
-       APP.services.services.find(s=>s.id===svcId)?.subServices.find(ss=>ss.id===subId)?.label?.fr))
-  );
-  // Simpler: re-render sub area to update ON state
+
   renderQuoteService(svcId, false);
-  // Force the clicked one as ON
-  setTimeout(() => {
-    document.querySelectorAll('.sub-btn').forEach(b => {
-      const ss = APP.services.services.find(s=>s.id===svcId)?.subServices.find(ss=>ss.id===subId);
-      const lbl = ss?.label?.[APP.lang] || ss?.label?.fr || subId;
-      b.classList.toggle('on', b.textContent.trim() === lbl);
-    });
-  }, 10);
   renderQuestions();
   setStepActive(2);
+
+  // ✅ FIX + LOCK dans contact form
+  syncAndLockContactService(svcId, subId);
+}
+function syncContactService(svcId, subId = null) {
+  const cSvc = document.getElementById('c-svc');
+  const cSub = document.getElementById('c-sub');
+  const wrap = document.getElementById('c-sub-wrap');
+
+  if (!APP.services?.services) return;
+
+  // ── SERVICE ──
+  if (cSvc) {
+    cSvc.value = svcId;
+    buildContactSubSelect(svcId);
+  }
+
+  // ── SUB SERVICE ──
+  if (subId && cSub) {
+    const svc = APP.services.services.find(s => s.id === svcId);
+    const sub = svc?.subServices?.find(s => s.id === subId);
+
+    if (sub) {
+      setTimeout(() => {
+        cSub.value = subId;
+      }, 50);
+    }
+
+    if (wrap) wrap.classList.add('show');
+  }
 }
 
 function renderQuestions() {
@@ -702,6 +753,80 @@ async function sendForm() {
   const txt = document.getElementById('fsub-txt');
   const arr = document.getElementById('fsub-arr');
 
+  // reset styles
+  const resetError = (el) => {
+    if (el) el.style.border = "";
+  };
+
+  const setError = (el) => {
+    if (el) el.style.border = "2px solid red";
+  };
+
+  const fn = document.getElementById('fn');
+  const ln = document.getElementById('ln');
+  const em = document.getElementById('em');
+  const ph = document.getElementById('ph');
+  const co = document.getElementById('co');
+  const svc = document.getElementById('c-svc');
+  const sub = document.getElementById('c-sub');
+  const msg = document.getElementById('msg');
+
+  // reset previous errors
+  [fn, ln, em, ph, co, svc, sub, msg].forEach(resetError);
+
+  let errors = [];
+
+  // VALIDATION
+  if (!fn.value || fn.value.trim().length < 2) {
+    errors.push("Prénom invalide");
+    setError(fn);
+  }
+
+  if (!ln.value || ln.value.trim().length < 2) {
+    errors.push("Nom invalide");
+    setError(ln);
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(em.value)) {
+    errors.push("Email invalide");
+    setError(em);
+  }
+
+  const phoneRegex = /^[0-9+\s]{6,20}$/;
+  if (!phoneRegex.test(ph.value)) {
+    errors.push("Téléphone invalide");
+    setError(ph);
+  }
+
+  if (!co.value || co.value.trim().length < 2) {
+    errors.push("Entreprise requise");
+    setError(co);
+  }
+
+  if (!svc.value) {
+    errors.push("Choisir un service");
+    setError(svc);
+  }
+
+  if (!sub.value) {
+    errors.push("Choisir un sous-service");
+    setError(sub);
+  }
+
+  if (!msg.value || msg.value.trim().length < 10) {
+    errors.push("Message trop court");
+    setError(msg);
+  }
+
+  // ❌ STOP si erreurs
+  if (errors.length > 0) {
+    alert("⚠️ Veuillez corriger les champs suivants :\n\n" + errors.join("\n"));
+
+    sending = false;
+    return;
+  }
+
   // UI loading
   if (btn) btn.style.opacity = '.7';
   if (txt) txt.textContent = "Envoi...";
@@ -709,15 +834,15 @@ async function sendForm() {
 
   const payload = {
     lang: APP.lang,
-    prenom: document.getElementById('fn')?.value || "",
-    nom: document.getElementById('ln')?.value || "",
-    email: document.getElementById('em')?.value || "",
-    tel: document.getElementById('ph')?.value || "",
-    company: document.getElementById('co')?.value || "",
-    service: document.getElementById('c-svc')?.value || "",
-    sub_service: document.getElementById('c-sub')?.value || "",
+    prenom: fn.value,
+    nom: ln.value,
+    email: em.value,
+    tel: ph.value,
+    company: co.value,
+    service: svc.value,
+    sub_service: sub.value,
     budget: document.querySelector('.bpill.sel')?.dataset.v || "",
-    message: document.getElementById('msg')?.value || "",
+    message: msg.value,
     estimate_base: APP.quote.base || 0,
     estimate_options: APP.quote.options || 0,
     estimate_total: (APP.quote.base || 0) + (APP.quote.options || 0),
@@ -746,20 +871,16 @@ async function sendForm() {
       return;
     }
 
-    console.log("✅ Data saved in Supabase");
-
-    // success UI
+    // SUCCESS
     if (txt) txt.textContent = "Envoyé ✔";
     if (arr) arr.textContent = "✓";
 
     showToast("Message envoyé avec succès ✔");
 
     // reset form
-    ["fn","ln","em","ph","co","msg"].forEach(id => {
-      document.getElementById(id).value = "";
-    });
+    [fn, ln, em, ph, co, msg].forEach(el => el.value = "");
 
-    document.getElementById('c-svc').selectedIndex = 0;
+    svc.selectedIndex = 0;
     document.getElementById('c-sub-wrap').classList.remove('show');
     document.querySelectorAll('.bpill').forEach(b => b.classList.remove('sel'));
 
@@ -768,7 +889,7 @@ async function sendForm() {
     alert("Erreur réseau");
   }
 
-  // reset button
+  // reset UI
   setTimeout(() => {
     if (btn) btn.style.opacity = "1";
     if (txt) txt.textContent = "Envoyer ma demande";
