@@ -1,0 +1,262 @@
+{
+  "services": [
+    {
+      "id": "ecommerce", "icon": "🛒",
+      "label": { "fr": "E-Commerce", "en": "E-Commerce", "ar": "تجارة إلكترونية" },
+      "subServices": [
+        { "id": "boutique_simple", "basePrice": 1200,
+          "label": { "fr": "Boutique en ligne", "en": "Online store", "ar": "متجر إلكتروني" },
+          "questions": ["pages","products_count","payment_gateway","admin_dashboard","mobile_app","multilang","support"] },
+        { "id": "marketplace", "basePrice": 4500,
+          "label": { "fr": "Marketplace multi-vendeurs", "en": "Multi-vendor marketplace", "ar": "منصة متعددة البائعين" },
+          "questions": ["vendors_count","payment_gateway","admin_dashboard","mobile_app","multilang","api_integration","support"] },
+        { "id": "ecom_mobile", "basePrice": 3000,
+          "label": { "fr": "App mobile E-Commerce", "en": "E-Commerce mobile app", "ar": "تطبيق تجارة إلكترونية" },
+          "questions": ["platforms","products_count","payment_gateway","push_notif","admin_dashboard","support"] }
+      ]
+    },
+    {
+      "id": "saas", "icon": "☁️",
+      "label": { "fr": "Logiciel SaaS", "en": "SaaS Software", "ar": "برنامج SaaS" },
+      "subServices": [
+        { "id": "saas_web", "basePrice": 5000,
+          "label": { "fr": "SaaS Web (Dashboard)", "en": "Web SaaS (Dashboard)", "ar": "SaaS ويب" },
+          "questions": ["users_count","modules_count","auth_type","api_integration","admin_dashboard","mobile_app","multilang","support"] },
+        { "id": "crm", "basePrice": 3500,
+          "label": { "fr": "CRM sur mesure", "en": "Custom CRM", "ar": "نظام CRM مخصص" },
+          "questions": ["users_count","modules_count","api_integration","admin_dashboard","multilang","support"] },
+        { "id": "erp", "basePrice": 8000,
+          "label": { "fr": "ERP / Gestion d'entreprise", "en": "ERP / Business management", "ar": "نظام ERP" },
+          "questions": ["users_count","modules_count","api_integration","admin_dashboard","multilang","mobile_app","support"] },
+        { "id": "saas_mobile", "basePrice": 6000,
+          "label": { "fr": "SaaS Mobile (iOS + Android)", "en": "Mobile SaaS (iOS + Android)", "ar": "SaaS موبايل" },
+          "questions": ["platforms","users_count","modules_count","auth_type","push_notif","admin_dashboard","support"] }
+      ]
+    },
+    {
+      "id": "website", "icon": "🌐",
+      "label": { "fr": "Site Web", "en": "Website", "ar": "موقع ويب" },
+      "subServices": [
+        { "id": "vitrine", "basePrice": 500,
+          "label": { "fr": "Site vitrine", "en": "Showcase website", "ar": "موقع عرض" },
+          "questions": ["pages","multilang","blog","seo","support"] },
+        { "id": "landing", "basePrice": 300,
+          "label": { "fr": "Landing page", "en": "Landing page", "ar": "صفحة هبوط" },
+          "questions": ["multilang","seo","support"] },
+        { "id": "portfolio", "basePrice": 400,
+          "label": { "fr": "Portfolio / CV en ligne", "en": "Portfolio / Online CV", "ar": "ملف أعمال" },
+          "questions": ["pages","multilang","seo","support"] },
+        { "id": "web_app", "basePrice": 3000,
+          "label": { "fr": "Application Web", "en": "Web Application", "ar": "تطبيق ويب" },
+          "questions": ["pages","users_count","auth_type","api_integration","admin_dashboard","multilang","mobile_app","support"] }
+      ]
+    },
+    {
+      "id": "mobile", "icon": "📱",
+      "label": { "fr": "Application Mobile", "en": "Mobile App", "ar": "تطبيق موبايل" },
+      "subServices": [
+        { "id": "mobile_cross", "basePrice": 4000,
+          "label": { "fr": "iOS + Android (Flutter)", "en": "iOS + Android (Flutter)", "ar": "iOS + Android" },
+          "questions": ["modules_count","auth_type","push_notif","api_integration","admin_dashboard","support"] },
+        { "id": "mobile_ios", "basePrice": 2500,
+          "label": { "fr": "iOS seulement", "en": "iOS only", "ar": "iOS فقط" },
+          "questions": ["modules_count","auth_type","push_notif","api_integration","support"] },
+        { "id": "mobile_android", "basePrice": 2500,
+          "label": { "fr": "Android seulement", "en": "Android only", "ar": "Android فقط" },
+          "questions": ["modules_count","auth_type","push_notif","api_integration","support"] },
+        { "id": "pwa", "basePrice": 1800,
+          "label": { "fr": "PWA (Progressive Web App)", "en": "PWA", "ar": "تطبيق PWA" },
+          "questions": ["modules_count","push_notif","api_integration","support"] }
+      ]
+    },
+    {
+      "id": "marketing", "icon": "📢",
+      "label": { "fr": "Marketing Digital", "en": "Digital Marketing", "ar": "تسويق رقمي" },
+      "subServices": [
+        { "id": "seo_svc", "basePrice": 400,
+          "label": { "fr": "SEO & Référencement", "en": "SEO & Ranking", "ar": "تحسين محركات البحث" },
+          "questions": ["pages","multilang","support"] },
+        { "id": "ads", "basePrice": 500,
+          "label": { "fr": "Google / Meta Ads", "en": "Google / Meta Ads", "ar": "إعلانات Google / Meta" },
+          "questions": ["support"] },
+        { "id": "social_media", "basePrice": 600,
+          "label": { "fr": "Gestion réseaux sociaux", "en": "Social media management", "ar": "إدارة التواصل الاجتماعي" },
+          "questions": ["support"] },
+        { "id": "email_mkt", "basePrice": 350,
+          "label": { "fr": "Email Marketing automatisé", "en": "Automated email marketing", "ar": "تسويق بريدي" },
+          "questions": ["users_count","support"] }
+      ]
+    },
+    {
+      "id": "design", "icon": "🎨",
+      "label": { "fr": "Design & Branding", "en": "Design & Branding", "ar": "تصميم وهوية" },
+      "subServices": [
+        { "id": "brand_full", "basePrice": 800,
+          "label": { "fr": "Identité visuelle complète", "en": "Complete brand identity", "ar": "هوية بصرية كاملة" },
+          "questions": ["support"] },
+        { "id": "logo_only", "basePrice": 250,
+          "label": { "fr": "Logo seulement", "en": "Logo only", "ar": "شعار فقط" },
+          "questions": ["support"] },
+        { "id": "ui_ux", "basePrice": 1200,
+          "label": { "fr": "Design UI/UX (maquettes)", "en": "UI/UX Design (mockups)", "ar": "تصميم UI/UX" },
+          "questions": ["pages","support"] }
+      ]
+    },
+    {
+      "id": "ai", "icon": "🤖",
+      "label": { "fr": "IA & Automatisation", "en": "AI & Automation", "ar": "ذكاء اصطناعي" },
+      "subServices": [
+        { "id": "chatbot_ai", "basePrice": 1500,
+          "label": { "fr": "Chatbot IA personnalisé", "en": "Custom AI chatbot", "ar": "روبوت محادثة ذكي" },
+          "questions": ["api_integration","multilang","support"] },
+        { "id": "automation", "basePrice": 2000,
+          "label": { "fr": "Automatisation de processus", "en": "Process automation", "ar": "أتمتة العمليات" },
+          "questions": ["api_integration","support"] },
+        { "id": "dashboard_ai", "basePrice": 3000,
+          "label": { "fr": "Dashboard analytique + IA", "en": "Analytics dashboard + AI", "ar": "لوحة تحليلات + AI" },
+          "questions": ["users_count","api_integration","admin_dashboard","support"] }
+      ]
+    },
+    {
+      "id": "custom", "icon": "🏢",
+      "label": { "fr": "Sur Mesure / Enterprise", "en": "Custom / Enterprise", "ar": "حل مخصص" },
+      "subServices": [
+        { "id": "mvp", "basePrice": 1500,
+          "label": { "fr": "MVP (valider une idée)", "en": "MVP (validate an idea)", "ar": "نموذج أولي MVP" },
+          "questions": ["pages","auth_type","support"] },
+        { "id": "enterprise_full", "basePrice": 15000,
+          "label": { "fr": "Solution Enterprise complète", "en": "Full Enterprise solution", "ar": "حل Enterprise متكامل" },
+          "questions": ["users_count","modules_count","api_integration","admin_dashboard","mobile_app","multilang","support"] },
+        { "id": "partnership", "basePrice": 0,
+          "label": { "fr": "Partenariat stratégique", "en": "Strategic partnership", "ar": "شراكة استراتيجية" },
+          "questions": ["support"] }
+      ]
+    }
+  ],
+
+  "questions": {
+    "pages": {
+      "type": "select",
+      "label": { "fr": "Nombre de pages / écrans", "en": "Number of pages / screens", "ar": "عدد الصفحات / الشاشات" },
+      "options": [
+        { "value":"1-5",   "label":{"fr":"1–5 pages","en":"1–5 pages","ar":"1–5 صفحات"},    "multiplier":1.0 },
+        { "value":"6-10",  "label":{"fr":"6–10 pages","en":"6–10 pages","ar":"6–10 صفحات"}, "multiplier":1.3 },
+        { "value":"11-20", "label":{"fr":"11–20 pages","en":"11–20 pages","ar":"11–20 صفحة"},"multiplier":1.6 },
+        { "value":"20+",   "label":{"fr":"20+ pages","en":"20+ pages","ar":"+20 صفحة"},      "multiplier":2.1 }
+      ]
+    },
+    "products_count": {
+      "type": "select",
+      "label": { "fr": "Nombre de produits", "en": "Number of products", "ar": "عدد المنتجات" },
+      "options": [
+        { "value":"1-50",    "label":{"fr":"1–50 produits","en":"1–50 products","ar":"1–50 منتج"},   "multiplier":1.0 },
+        { "value":"51-200",  "label":{"fr":"51–200 produits","en":"51–200 products","ar":"51–200 منتج"},"multiplier":1.25 },
+        { "value":"201-500", "label":{"fr":"201–500 produits","en":"201–500 products","ar":"201–500 منتج"},"multiplier":1.6 },
+        { "value":"500+",    "label":{"fr":"500+ produits","en":"500+ products","ar":"+500 منتج"},    "multiplier":2.1 }
+      ]
+    },
+    "vendors_count": {
+      "type": "select",
+      "label": { "fr": "Nombre de vendeurs prévus", "en": "Expected number of vendors", "ar": "عدد البائعين المتوقع" },
+      "options": [
+        { "value":"1-10",  "label":{"fr":"1–10","en":"1–10","ar":"1–10"},   "multiplier":1.0 },
+        { "value":"11-50", "label":{"fr":"11–50","en":"11–50","ar":"11–50"},"multiplier":1.35 },
+        { "value":"50+",   "label":{"fr":"50+","en":"50+","ar":"+50"},       "multiplier":1.8 }
+      ]
+    },
+    "users_count": {
+      "type": "select",
+      "label": { "fr": "Utilisateurs attendus", "en": "Expected users", "ar": "عدد المستخدمين المتوقع" },
+      "options": [
+        { "value":"<100",   "label":{"fr":"< 100","en":"< 100","ar":"أقل من 100"},         "multiplier":1.0 },
+        { "value":"100-1k", "label":{"fr":"100–1 000","en":"100–1,000","ar":"100–1,000"},  "multiplier":1.2 },
+        { "value":"1k-10k", "label":{"fr":"1 000–10 000","en":"1k–10k","ar":"1,000–10,000"},"multiplier":1.55 },
+        { "value":"10k+",   "label":{"fr":"10 000+","en":"10,000+","ar":"+10,000"},         "multiplier":2.0 }
+      ]
+    },
+    "modules_count": {
+      "type": "select",
+      "label": { "fr": "Nombre de modules / fonctionnalités", "en": "Number of modules / features", "ar": "عدد الوحدات / الميزات" },
+      "options": [
+        { "value":"1-3",  "label":{"fr":"1–3 modules","en":"1–3 modules","ar":"1–3 وحدات"},   "multiplier":1.0 },
+        { "value":"4-6",  "label":{"fr":"4–6 modules","en":"4–6 modules","ar":"4–6 وحدات"},   "multiplier":1.4 },
+        { "value":"7-10", "label":{"fr":"7–10 modules","en":"7–10 modules","ar":"7–10 وحدات"},"multiplier":1.85 },
+        { "value":"10+",  "label":{"fr":"10+ modules","en":"10+ modules","ar":"+10 وحدات"},   "multiplier":2.4 }
+      ]
+    },
+    "platforms": {
+      "type": "multi",
+      "label": { "fr": "Plateformes cibles", "en": "Target platforms", "ar": "المنصات المستهدفة" },
+      "options": [
+        { "value":"ios",     "label":{"fr":"iOS","en":"iOS","ar":"iOS"},           "add":0 },
+        { "value":"android", "label":{"fr":"Android","en":"Android","ar":"Android"},"add":0 },
+        { "value":"web",     "label":{"fr":"Version Web","en":"Web version","ar":"نسخة ويب"},"add":800 }
+      ]
+    },
+    "payment_gateway": {
+      "type": "toggle",
+      "label": { "fr": "Paiement en ligne intégré ?", "en": "Integrated online payment?", "ar": "بوابة دفع إلكتروني؟" },
+      "add": 500
+    },
+    "auth_type": {
+      "type": "select",
+      "label": { "fr": "Type d'authentification", "en": "Authentication type", "ar": "نوع تسجيل الدخول" },
+      "options": [
+        { "value":"none",   "label":{"fr":"Aucune (public)","en":"None (public)","ar":"لا يوجد (عام)"},       "add":0 },
+        { "value":"basic",  "label":{"fr":"Email / Mot de passe","en":"Email / Password","ar":"بريد / كلمة مرور"},"add":300 },
+        { "value":"social", "label":{"fr":"Social (Google, Facebook)","en":"Social (Google, Facebook)","ar":"Google, Facebook"},"add":500 },
+        { "value":"2fa",    "label":{"fr":"Double authentification (2FA)","en":"Two-factor auth (2FA)","ar":"مصادقة ثنائية (2FA)"},"add":800 }
+      ]
+    },
+    "api_integration": {
+      "type": "select",
+      "label": { "fr": "Intégrations API tierces", "en": "Third-party API integrations", "ar": "تكاملات API خارجية" },
+      "options": [
+        { "value":"none", "label":{"fr":"Aucune","en":"None","ar":"لا يوجد"}, "add":0 },
+        { "value":"1-2",  "label":{"fr":"1–2 APIs","en":"1–2 APIs","ar":"1–2 APIs"}, "add":400 },
+        { "value":"3-5",  "label":{"fr":"3–5 APIs","en":"3–5 APIs","ar":"3–5 APIs"}, "add":900 },
+        { "value":"5+",   "label":{"fr":"5+ APIs","en":"5+ APIs","ar":"+5 APIs"},    "add":1600 }
+      ]
+    },
+    "admin_dashboard": {
+      "type": "toggle",
+      "label": { "fr": "Tableau de bord administrateur ?", "en": "Admin dashboard?", "ar": "لوحة تحكم إدارية؟" },
+      "add": 600
+    },
+    "mobile_app": {
+      "type": "toggle",
+      "label": { "fr": "Version mobile également ?", "en": "Mobile version too?", "ar": "نسخة موبايل أيضاً؟" },
+      "add": 2500
+    },
+    "multilang": {
+      "type": "toggle",
+      "label": { "fr": "Multilingue (plusieurs langues) ?", "en": "Multilingual?", "ar": "دعم متعدد اللغات؟" },
+      "add": 400
+    },
+    "push_notif": {
+      "type": "toggle",
+      "label": { "fr": "Notifications push ?", "en": "Push notifications?", "ar": "إشعارات push؟" },
+      "add": 350
+    },
+    "blog": {
+      "type": "toggle",
+      "label": { "fr": "Section blog / actualités ?", "en": "Blog / news section?", "ar": "قسم مدونة / أخبار؟" },
+      "add": 300
+    },
+    "seo": {
+      "type": "toggle",
+      "label": { "fr": "SEO avancé inclus ?", "en": "Advanced SEO included?", "ar": "SEO متقدم؟" },
+      "add": 400
+    },
+    "support": {
+      "type": "select",
+      "label": { "fr": "Maintenance après livraison", "en": "Post-delivery maintenance", "ar": "صيانة بعد التسليم" },
+      "options": [
+        { "value":"none",    "label":{"fr":"Aucune","en":"None","ar":"بدون"},                       "add":0 },
+        { "value":"basic",   "label":{"fr":"Basique – 3 mois","en":"Basic – 3 months","ar":"أساسي – 3 أشهر"}, "add":300 },
+        { "value":"standard","label":{"fr":"Standard – 6 mois","en":"Standard – 6 months","ar":"قياسي – 6 أشهر"},"add":600 },
+        { "value":"premium", "label":{"fr":"Premium – 12 mois 24/7","en":"Premium – 12 months 24/7","ar":"مميز – 12 شهراً 24/7"},"add":1200 }
+      ]
+    }
+  }
+}

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="SoftByn – Solutions Digitales 360° : Agence Digitale + Tech Studio"/>
+  <title>SoftByn – Solutions Digitales 360°</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="pb" id="pb"></div>
+<!-- Custom cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+<!-- Back to top -->
+<button class="btt" id="btt" onclick="goTo('hero')">↑</button>
+
+<!-- ══ LANG SWITCHER ══ -->
+<div class="lang-sw">
+  <button class="lang-btn on" id="btn-fr" onclick="setLang('fr')">🇫🇷 FR</button>
+  <button class="lang-btn"    id="btn-en" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lang-btn"    id="btn-ar" onclick="setLang('ar')">🇸🇦 AR</button>
+</div>
+
+<!-- ══════════════════════════════════
+     NAVBAR
+══════════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <svg class="logo-svg" viewBox="0 0 36 36" fill="none">
+      <defs>
+        <linearGradient id="lg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stop-color="#00CFFF"/>
+          <stop offset="50%"  stop-color="#2563EB"/>
+          <stop offset="100%" stop-color="#A855F7"/>
+        </linearGradient>
+      </defs>
+      <path d="M26 7C26 7 12 7 12 14C12 19.5 22 19.5 22 25C22 31.5 8 31.5 8 31.5"
+            stroke="url(#lg)" stroke-width="5.5" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-name">SoftByn</span>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#solutions" id="nav-sol">Solutions</a>
+    <a href="#missions"  id="nav-mis">Missions</a>
+    <a href="#quote"     id="nav-quo">Devis</a>
+    <a href="#contact"   id="nav-con">Contact</a>
+    <a href="#about"     id="nav-abo">À Propos</a>
+
+  </div>
+
+  <button class="nav-cta" id="nav-cta" onclick="goTo('contact')">Consultation Gratuite</button>
+  <div class="hbg" id="hbg" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <div class="h-eye"><span class="hdot"></span><span id="hero-badge">Startup · Fondée 2026</span></div>
+      <div class="h-year">🚀 2026</div>
+    </div>
+    <h1 class="hero-h1" id="hero-h1">Solutions à <em> 360°</em></h1>
+    <p class="hero-sub"  id="hero-sub">pour votre Entreprise</p>
+    <p class="hero-desc" id="hero-desc">SoftByn est une startup qui combine Agence Digitale et Tech Studio pour transformer vos besoins en produits digitaux performants.</p>
+    <div class="hero-btns">
+      <a href="#solutions" class="btn-main" id="hero-btn1">Découvrir nos solutions <span class="arr">→</span></a>
+      <a href="#contact"   class="btn-ghost" id="hero-btn2">1ère Consultation Gratuite 🎁</a>
+    </div>
+    <div class="hero-metrics reveal">
+      <div class="metric"><div class="mn">2026</div><div class="ml" id="hero-m1l">Fondée</div></div>
+      <div class="metric"><div class="mn">360°</div><div class="ml" id="hero-m2l">Solutions</div></div>
+      <div class="metric"><div class="mn">2</div>   <div class="ml" id="hero-m3l">Pôles</div></div>
+      <div class="metric"><div class="mn">∞</div>   <div class="ml" id="hero-m4l">Ambition</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item">Marketing Digital</span><span class="mq-item">Site Web</span>
+    <span class="mq-item">E-Commerce</span><span class="mq-item">Design &amp; Branding</span>
+    <span class="mq-item">IA &amp; Automatisation</span><span class="mq-item">Logiciels SaaS</span>
+    <span class="mq-item">Produits Numériques</span><span class="mq-item">Partenariats</span>
+    <span class="mq-item">SEO</span><span class="mq-item">Angular</span><span class="mq-item">Flutter</span>
+    <span class="mq-item">Marketing Digital</span><span class="mq-item">Site Web</span>
+    <span class="mq-item">E-Commerce</span><span class="mq-item">Design &amp; Branding</span>
+    <span class="mq-item">IA &amp; Automatisation</span><span class="mq-item">Logiciels SaaS</span>
+    <span class="mq-item">Produits Numériques</span><span class="mq-item">Partenariats</span>
+    <span class="mq-item">SEO</span><span class="mq-item">Angular</span><span class="mq-item">Flutter</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     SOLUTIONS
+══════════════════════════════════ -->
+<section id="solutions">
+  <div class="sol-head reveal">
+    <div class="s-tag" id="sol-tag">Nos Offres</div>
+    <h2 class="s-title" id="sol-title">Comment nous créons de la <em>Valeur</em></h2>
+    <p class="s-desc"   id="sol-desc">Deux pôles complémentaires pour couvrir tous vos besoins digitaux.</p>
+  </div>
+
+  <div class="sol-grid reveal d1">
+    <!-- Agence Digitale -->
+    <div class="sol-col">
+      <div class="sol-head2 blue">
+        <span>🔍</span><h3 id="sol-pole1">Agence Digitale</h3>
+      </div>
+      <div class="sol-items">
+        <div class="sol-item"><div class="sol-ico">📢</div><div>
+          <h4 id="si-marketing">Marketing Digital</h4>
+          <p  id="sid-marketing">SEO, Google Ads, Réseaux Sociaux, Email Marketing</p>
+        </div></div>
+        <div class="sol-item"><div class="sol-ico">🌐</div><div>
+          <h4 id="si-website">Site Web &amp; E-commerce</h4>
+          <p  id="sid-website">Sites, boutiques en ligne, applications</p>
+        </div></div>
+        <div class="sol-item"><div class="sol-ico">🎨</div><div>
+          <h4 id="si-design">Design &amp; Branding</h4>
+          <p  id="sid-design">Identité visuelle, Logos, UI/UX</p>
+        </div></div>
+        <div class="sol-item"><div class="sol-ico">🤖</div><div>
+          <h4 id="si-automation">Automatisation &amp; IA</h4>
+          <p  id="sid-automation">Chatbots, IA, Dashboards automatisés</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Tech Studio -->
+    <div class="sol-col">
+      <div class="sol-head2 green">
+        <span>💡</span><h3 id="sol-pole2">Tech Studio</h3>
+      </div>
+      <div class="sol-items">
+        <div class="sol-item"><div class="sol-ico">☁️</div><div>
+          <h4 id="si-saas">Logiciels SaaS</h4>
+          <p  id="sid-saas">Apps &amp; logiciels cloud en abonnement</p>
+        </div></div>
+        <div class="sol-item"><div class="sol-ico">📈</div><div>
+          <h4 id="si-products">Produits Numériques</h4>
+          <p  id="sid-products">Templates, Cours en ligne, Ressources</p>
+        </div></div>
+        <div class="sol-item"><div class="sol-ico">🤝</div><div>
+          <h4 id="si-partnerships">Partenariats Stratégiques</h4>
+          <p  id="sid-partnerships">Investissement startup, Co-création</p>
+        </div></div>
+        <div class="sol-item"><div class="sol-ico">🏪</div><div>
+          <h4 id="si-ecommerce">Plateformes E-commerce</h4>
+          <p  id="sid-ecommerce">Marketplaces, génération de leads</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Avantages -->
+  <div class="sol-adv reveal d2">
+    <span class="sol-adv-title" id="sol-adv-title">✅ Vos Avantages</span>
+    <div class="adv-list">
+      <div class="adv-item"><div class="adv-chk">✓</div><div>
+        <strong id="sol-adv1b">Augmentation du CA</strong> –
+        <span   id="sol-adv1t">Stratégies performantes pour booster vos ventes.</span>
+      </div></div>
+      <div class="adv-item"><div class="adv-chk">✓</div><div>
+        <strong id="sol-adv2b">Automatisation des Processus</strong> –
+        <span   id="sol-adv2t">Outils tech pour gagner du temps.</span>
+      </div></div>
+      <div class="adv-item"><div class="adv-chk">✓</div><div>
+        <strong id="sol-adv3b">Innovation &amp; Technologies</strong> –
+        <span   id="sol-adv3t">Logiciels sur mesure pour devancer la concurrence.</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     MISSIONS
+══════════════════════════════════ -->
+<section id="missions">
+  <div class="reveal" style="text-align:center;margin-bottom:14px">
+    <div class="s-tag" id="mis-tag">Notre ADN</div>
+    <h2 class="s-title" id="mis-title">Missions &amp; <em>Vision</em></h2>
+    <p class="s-desc" style="max-width:520px;margin:0 auto" id="mis-desc">
+      3 piliers fondamentaux : Développement · Marketing · Management.
+    </p>
+  </div>
+  <div class="missions-grid">
+    <div class="mc reveal">
+      <div class="mc-ico">⚙️</div>
+      <h3 id="dev-t">Mission Développement</h3>
+      <ul class="mc-steps">
+        <li id="dev1">Livrer sites web &amp; apps avec qualité</li>
+        <li id="dev2">Créer des MVPs rapides</li>
+        <li id="dev3">Développer le produit principal SoftByn</li>
+        <li id="dev4">Réutiliser les composants, standardiser</li>
+      </ul>
+    </div>
+    <div class="mc reveal d1">
+      <div class="mc-ico">📣</div>
+      <h3 id="mkt-t">Mission Marketing</h3>
+      <ul class="mc-steps">
+        <li id="mkt1">Générer des leads qualifiés</li>
+        <li id="mkt2">Construire l'image de SoftByn</li>
+        <li id="mkt3">Préparer offres et suivre les prospects</li>
+        <li id="mkt4">Valider le marché et collecter les feedbacks</li>
+      </ul>
+    </div>
+    <div class="mc reveal d2">
+      <div class="mc-ico">🎯</div>
+      <h3 id="mng-t">Mission Management</h3>
+      <ul class="mc-steps">
+        <li id="mng1">Transformer prospects en clients</li>
+        <li id="mng2">Définir la niche et prioriser</li>
+        <li id="mng3">Identifier les opportunités et MVP</li>
+        <li id="mng4">Direction stratégique : pivot ou scale</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     PROCESS
+══════════════════════════════════ -->
+<section id="process">
+  <div class="ph reveal">
+    <div class="s-tag" id="proc-tag">Comment on travaille</div>
+    <h2 class="s-title" id="proc-title">Notre processus <em>éprouvé</em></h2>
+    <p class="s-desc"   id="proc-desc">5 étapes claires — Marketing amène le besoin → Dev construit → Commercial vend.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="sn">🔍<div class="sn-num">1</div></div>
+      <h4 id="s1t">Découverte</h4><p id="s1d">Comprendre vos besoins réels</p>
+    </div>
+    <div class="step reveal d1">
+      <div class="sn">🎨<div class="sn-num">2</div></div>
+      <h4 id="s2t">Design &amp; MVP</h4><p id="s2d">Prototype pour valider l'idée</p>
+    </div>
+    <div class="step reveal d2">
+      <div class="sn">⚙️<div class="sn-num">3</div></div>
+      <h4 id="s3t">Développement</h4><p id="s3d">Sprints agiles évolutifs</p>
+    </div>
+    <div class="step reveal d3">
+      <div class="sn">✅<div class="sn-num">4</div></div>
+      <h4 id="s4t">Validation</h4><p id="s4d">Tests &amp; feedback clients</p>
+    </div>
+    <div class="step reveal d4">
+      <div class="sn">🚀<div class="sn-num">5</div></div>
+      <h4 id="s5t">Livraison &amp; Scale</h4><p id="s5d">Déploiement et croissance</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     QUOTE — DYNAMIC PRICING CALCULATOR
+══════════════════════════════════ -->
+<section id="quote">
+  <div class="quote-head reveal">
+    <div class="s-tag" id="q-tag">Devis Dynamique</div>
+    <h2 class="s-title" id="q-title">Calculez votre <em>devis en temps réel</em></h2>
+    <p class="s-desc"   id="q-desc">Sélectionnez votre projet, configurez vos options et obtenez une estimation instantanée.</p>
+  </div>
+
+  <!-- Step indicators -->
+  <div class="q-steps-label reveal d1">
+    <div class="q-step-lbl" id="qsl1">
+      <div class="q-step-dot">1</div>
+      <span id="q-step1">① Choisissez un service</span>
+    </div>
+    <div class="q-step-lbl" id="qsl2">
+      <div class="q-step-dot">2</div>
+      <span id="q-step2">② Sous-service</span>
+    </div>
+    <div class="q-step-lbl" id="qsl3">
+      <div class="q-step-dot">3</div>
+      <span id="q-step3">③ Configurez vos besoins</span>
+    </div>
+  </div>
+
+  <!-- ① Service buttons — filled by JS -->
+  <div class="svc-grid reveal d2" id="q-svc-grid"></div>
+
+  <!-- ② Sub-service — shown after service selected -->
+  <div class="sub-svc-area reveal d3" id="q-sub-area" style="display:none"></div>
+
+  <!-- ③ Questions -->
+  <div class="q-area" id="q-area">
+    <div class="q-empty">← Choisissez un service pour commencer</div>
+  </div>
+
+  <!-- Estimate box — injected by JS -->
+</section>
+
+
+
+
+<!-- ══════════════════════════════════
+     CONTACT
+══════════════════════════════════ -->
+<section id="contact">
+  <div class="cw">
+   
+    <!-- Left info -->
+    <div class="cl reveal">
+      <div class="s-tag" id="con-tag">Contact</div>
+      <h2 class="s-title" id="con-title">Parlons de votre <em>projet</em></h2>
+      <p class="s-desc"   id="con-desc">Remplissez le formulaire — nous vous revenons sous 24h.</p>
+
+      <div class="c-infos" style="margin-top:24px">
+        <div class="c-info">
+          <div class="c-ico">🌍</div>
+          <div><h5 id="con-addr-l">Disponibilité</h5><p id="con-addr-v">Disponible à distance · Worldwide</p></div>
+        </div>
+        <div class="c-info">
+          <div class="c-ico">📧</div>
+          <div><h5>Email</h5><p>contact@softbyn.com</p></div>
+        </div>
+        <div class="c-info">
+          <div class="c-ico">💼</div>
+          <div><h5>LinkedIn</h5><p><a href="linkedin.com">/company/softbyn</a></p></div>
+        </div>
+        <div class="c-info">
+          <div class="c-ico">⏰</div>
+          <div><h5 id="con-avail-l">Horaires</h5><p id="con-avail-v">Lun – Ven, 9h – 18h</p></div>
+        </div>
+      </div>
+      <div class="offer-tag" id="con-offer">🎁 1ère Consultation Gratuite — Sans Engagement</div>
+    </div>
+ 
+    <!-- Right form -->
+    <div class="cf reveal d1">
+      
+      <div class="fh">
+        <h3>Formulaire de contact</h3>
+        <p>Réponse garantie sous 24h ouvrées</p>
+      </div>
+
+      <div class="f2c">
+        <div class="fg">
+          <label id="lbl-fn" for="fn">Prénom</label>
+          <input type="text" id="fn" placeholder="Votre prénom" autocomplete="given-name"/>
+        </div>
+        <div class="fg">
+          <label id="lbl-ln" for="ln">Nom</label>
+          <input type="text" id="ln" placeholder="Votre nom" autocomplete="family-name"/>
+        </div>
+      </div>
+
+      <div class="f2c">
+        <div class="fg">
+          <label id="lbl-em" for="em">Email</label>
+          <input type="email" id="em" placeholder="vous@email.com" autocomplete="email"/>
+        </div>
+        <div class="fg">
+          <label id="lbl-ph" for="ph">Téléphone</label>
+          <input type="tel" id="ph" placeholder="+XX XX XXX XXX" autocomplete="tel"/>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label id="lbl-co" for="co">Entreprise</label>
+        <input type="text" id="co" placeholder="Nom de votre entreprise" autocomplete="organization"/>
+      </div>
+
+      <!-- Service select → sub-service appears dynamically -->
+      <div class="fg">
+        <label id="lbl-svc" for="c-svc">Service principal</label>
+        <select id="c-svc" onchange="onContactServiceChange(this)">
+          <option value="" disabled selected>Choisir un service</option>
+        </select>
+      </div>
+
+      <div class="fg sub-select-wrap" id="c-sub-wrap">
+        <label id="lbl-sub" for="c-sub">Sous-service</label>
+        <select id="c-sub">
+          <option value="" disabled selected>Choisir un sous-service</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label id="lbl-bud">Budget estimatif</label>
+        <div class="bpills" id="budget-pills"></div>
+      </div>
+
+      <div class="fg">
+        <label id="lbl-msg" for="msg">Message</label>
+        <textarea id="msg" placeholder="Décrivez votre projet..."></textarea>
+      </div>
+
+      <button class="f-submit" id="fsub" onclick="sendForm()">
+        <span id="fsub-txt">Envoyer ma demande</span>
+        <span id="fsub-arr">→</span>
+      </button>
+      <p class="f-note" id="f-note">🔒 Données protégées · Réponse sous 24h · Sans engagement</p>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     ABOUT
+══════════════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <!-- Visual -->
+    <div class="reveal">
+      <div class="av">
+        <div class="av-main">
+          <div class="av-grid"></div>
+          <div class="av-circle">
+            <svg width="54" height="54" viewBox="0 0 36 36" fill="none">
+              <defs>
+                <linearGradient id="ag" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%"   stop-color="#00CFFF"/>
+                  <stop offset="50%"  stop-color="#2563EB"/>
+                  <stop offset="100%" stop-color="#A855F7"/>
+                </linearGradient>
+              </defs>
+              <path d="M26 7C26 7 12 7 12 14C12 19.5 22 19.5 22 25C22 31.5 8 31.5 8 31.5"
+                    stroke="url(#ag)" stroke-width="5.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="av-badge av-b1">
+          <div class="bv">2026</div><div class="bl" id="abo-b1l">Fondée</div>
+        </div>
+        <div class="av-badge av-b2">
+          <div class="bv">360° </div><div class="bl" id="abo-b2l">Solutions</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="reveal d2">
+      <div class="s-tag" id="abo-tag">À Propos</div>
+      <h2 class="s-title" id="abo-title">Une startup qui <em>construit l'avenir</em></h2>
+      <p class="s-desc"   id="abo-desc">
+        Fondée en 2026, SoftByn est une startup avec une mission claire : comprendre les besoins
+        réels des clients et les transformer en produits digitaux performants.
+      </p>
+      <div class="vals">
+        <div class="val-item"><div class="val-ico">🎯</div><div>
+          <h4 id="v1t">Mission claire</h4><p id="v1d">Clients → Compréhension → Produit.</p>
+        </div></div>
+        <div class="val-item"><div class="val-ico">🔄</div><div>
+          <h4 id="v2t">Boucle vertueuse</h4><p id="v2d">Marketing → Dev → Commercial.</p>
+        </div></div>
+        <div class="val-item"><div class="val-ico">🚀</div><div>
+          <h4 id="v3t">Prototypage rapide</h4><p id="v3d">MVPs légers pour tester rapidement.</p>
+        </div></div>
+        <div class="val-item"><div class="val-ico">📈</div><div>
+          <h4 id="v4t">Croissance structurée</h4><p id="v4d">Direction claire et flux constant.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="fg-grid">
+    <div class="fb">
+      <a href="#hero" class="nav-logo" style="text-decoration:none">
+        <svg class="logo-svg" viewBox="0 0 36 36" fill="none">
+          <defs>
+            <linearGradient id="fl" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%"   stop-color="#00CFFF"/>
+              <stop offset="50%"  stop-color="#2563EB"/>
+              <stop offset="100%" stop-color="#A855F7"/>
+            </linearGradient>
+          </defs>
+          <path d="M26 7C26 7 12 7 12 14C12 19.5 22 19.5 22 25C22 31.5 8 31.5 8 31.5"
+                stroke="url(#fl)" stroke-width="5.5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-name" style="background:linear-gradient(135deg,#00CFFF,#2563EB,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">SoftByn</span>
+      </a>
+      <p id="ft-desc">Startup fondée en 2026. Agence Digitale + Tech Studio. Solutions 360°.</p>
+      <div class="socials">
+        <a href="#" class="soc" aria-label="LinkedIn">in</a>
+        <a href="#" class="soc" aria-label="X">𝕏</a>
+        <a href="#" class="soc" aria-label="Facebook">f</a>
+        <a href="#" class="soc" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+
+    <div class="fc">
+      <h5 id="ft-col1">Agence Digitale</h5>
+      <ul>
+        <li><a href="#solutions">Marketing Digital</a></li>
+        <li><a href="#solutions">Site Web &amp; E-commerce</a></li>
+        <li><a href="#solutions">Design &amp; Branding</a></li>
+        <li><a href="#solutions">Automatisation &amp; IA</a></li>
+      </ul>
+    </div>
+
+    <div class="fc">
+      <h5 id="ft-col2">Tech Studio</h5>
+      <ul>
+        <li><a href="#solutions">Logiciels SaaS</a></li>
+        <li><a href="#solutions">Produits Numériques</a></li>
+        <li><a href="#solutions">Partenariats</a></li>
+        <li><a href="#solutions">Marketplaces</a></li>
+      </ul>
+    </div>
+
+    <div class="fc">
+      <h5 id="ft-col3">Entreprise</h5>
+      <ul>
+        <li><a href="#about">À Propos</a></li>
+        <li><a href="#missions">Missions</a></li>
+        <li><a href="#quote">Devis</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="fb-bottom">
+    <span id="ft-rights">© 2026 SoftByn. Tous droits réservés.</span>
+    <span id="ft-made">Fait avec ❤️</span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="alert"></div>
+
+
+<!-- ══════════════════════════════════
+     CHATBOT
+══════════════════════════════════ -->
+<button class="cb-fab" id="cbFab" onclick="toggleChat()" aria-label="Assistant SoftByn">
+  🤖<div class="cb-badge" id="cb-badge">1</div>
+</button>
+
+<div class="cb-box" id="cbBox" role="dialog" aria-label="Chat assistant">
+  <!-- Header -->
+  <div class="cb-header">
+    <div class="cb-av">🤖</div>
+    <div class="cb-hi">
+      <h4 id="cb-title">SoftByn Assistant</h4>
+      <p  id="cb-online">En ligne · Répond en secondes</p>
+    </div>
+    <button class="cb-close" onclick="closeChat()" aria-label="Fermer">✕</button>
+  </div>
+
+  <!-- Messages -->
+  <div class="cb-msgs" id="cb-msgs">
+    <div class="msg bot">
+      <div class="msg-bub" id="cb-welcome-bub">
+        👋 Bonjour ! Je suis l'assistant SoftByn. Comment puis-je vous aider ?
+      </div>
+      <div class="msg-time" id="cb-welcome-time"></div>
+    </div>
+    <!-- Typing indicator -->
+    <div class="typing" id="cb-typing"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Quick replies -->
+  <div class="cb-qr" id="cb-qr-row">
+    <button class="qr" id="cb-qr1" onclick="cbSendQR(this)">💰 Tarifs</button>
+    <button class="qr" id="cb-qr2" onclick="cbSendQR(this)">🌐 Services</button>
+    <button class="qr" id="cb-qr3" onclick="cbSendQR(this)">📞 Contact</button>
+    <button class="qr" id="cb-qr4" onclick="cbSendQR(this)">⏱ Délais</button>
+    <button class="qr" id="cb-qr5" onclick="cbSendQR(this)">🚀 À propos</button>
+  </div>
+
+  <!-- Input -->
+  <div class="cb-inp-row">
+    <input class="cb-inp" id="cb-inp" type="text"
+           placeholder="Écrivez votre message..."
+           onkeydown="if(event.key==='Enter') cbSend()"/>
+    <button class="cb-send" onclick="cbSend()" aria-label="Envoyer">➤</button>
+  </div>
+</div>
+
+
+<!-- ══ SCRIPTS ══ -->
+<script src="env.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
