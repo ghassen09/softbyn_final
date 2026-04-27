@@ -749,19 +749,6 @@ async function sendForm() {
   if (sending) return;
   sending = true;
 
-  const btn = document.getElementById('fsub');
-  const txt = document.getElementById('fsub-txt');
-  const arr = document.getElementById('fsub-arr');
-
-  // reset styles
-  const resetError = (el) => {
-    if (el) el.style.border = "";
-  };
-
-  const setError = (el) => {
-    if (el) el.style.border = "2px solid red";
-  };
-
   const fn = document.getElementById('fn');
   const ln = document.getElementById('ln');
   const em = document.getElementById('em');
@@ -771,78 +758,78 @@ async function sendForm() {
   const sub = document.getElementById('c-sub');
   const msg = document.getElementById('msg');
 
-  // reset previous errors
-  [fn, ln, em, ph, co, svc, sub, msg].forEach(resetError);
-
-  let errors = [];
-
-  // VALIDATION
-  if (!fn.value || fn.value.trim().length < 2) {
-    errors.push("Prénom invalide");
-    setError(fn);
-  }
-
-  if (!ln.value || ln.value.trim().length < 2) {
-    errors.push("Nom invalide");
-    setError(ln);
-  }
+  const btn = document.getElementById('fsub');
+  const txt = document.getElementById('fsub-txt');
+  const arr = document.getElementById('fsub-arr');
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(em.value)) {
-    errors.push("Email invalide");
-    setError(em);
-  }
-
   const phoneRegex = /^[0-9+\s]{6,20}$/;
-  if (!phoneRegex.test(ph.value)) {
-    errors.push("Téléphone invalide");
-    setError(ph);
-  }
 
-  if (!co.value || co.value.trim().length < 2) {
-    errors.push("Entreprise requise");
-    setError(co);
-  }
-
-  if (!svc.value) {
-    errors.push("Choisir un service");
-    setError(svc);
-  }
-
-  if (!sub.value) {
-    errors.push("Choisir un sous-service");
-    setError(sub);
-  }
-
-  if (!msg.value || msg.value.trim().length < 10) {
-    errors.push("Message trop court");
-    setError(msg);
-  }
-
-  // ❌ STOP si erreurs
-  if (errors.length > 0) {
-    alert("⚠️ Veuillez corriger les champs suivants :\n\n" + errors.join("\n"));
-
+  // ❌ VALIDATION (TOAST)
+  if (fn.value.trim().length < 2) {
+    showToast("Prénom requis");
     sending = false;
     return;
   }
 
-  // UI loading
-  if (btn) btn.style.opacity = '.7';
+  if (ln.value.trim().length < 2) {
+    showToast("Nom requis");
+    sending = false;
+    return;
+  }
+
+  if (!emailRegex.test(em.value.trim())) {
+    showToast("Email invalide");
+    sending = false;
+    return;
+  }
+
+  if (!phoneRegex.test(ph.value.trim())) {
+    showToast("Téléphone invalide");
+    sending = false;
+    return;
+  }
+
+  if (co.value.trim().length < 2) {
+    showToast("Entreprise requise");
+    sending = false;
+    return;
+  }
+
+  if (!svc.value) {
+    showToast("Choisir un service");
+    sending = false;
+    return;
+  }
+
+  if (!sub.value) {
+    showToast("Choisir un sous-service");
+    sending = false;
+    return;
+  }
+
+  if (msg.value.trim().length < 10) {
+    showToast("Message trop court");
+    sending = false;
+    return;
+  }
+
+  // 🔄 UI loading
+  if (btn) btn.style.opacity = ".7";
   if (txt) txt.textContent = "Envoi...";
   if (arr) arr.textContent = "⏳";
 
   const payload = {
     lang: APP.lang,
-    prenom: fn.value,
-    nom: ln.value,
-    email: em.value,
-    tel: ph.value,
-    company: co.value,
+    prenom: fn.value.trim(),
+    nom: ln.value.trim(),
+    email: em.value.trim(),
+    tel: ph.value.trim(),
+    company: co.value.trim(),
     service: svc.value,
     sub_service: sub.value,
     budget: document.querySelector('.bpill.sel')?.dataset.v || "",
-    message: msg.value,
+    message: msg.value.trim(),
     estimate_base: APP.quote.base || 0,
     estimate_options: APP.quote.options || 0,
     estimate_total: (APP.quote.base || 0) + (APP.quote.options || 0),
@@ -865,45 +852,81 @@ async function sendForm() {
     );
 
     if (!res.ok) {
-      const err = await res.text();
-      console.error("❌ Supabase error:", err);
-      alert("Erreur envoi formulaire");
+      console.error(await res.text());
+      showToast("Erreur serveur ❌");
+      sending = false;
       return;
     }
 
-    // SUCCESS
+    // ✅ SUCCESS
+    showToast("Message envoyé avec succès ✔", "success");
+
     if (txt) txt.textContent = "Envoyé ✔";
     if (arr) arr.textContent = "✓";
 
-    showToast("Message envoyé avec succès ✔");
-
     // reset form
-    [fn, ln, em, ph, co, msg].forEach(el => el.value = "");
+    fn.value = "";
+    ln.value = "";
+    em.value = "";
+    ph.value = "";
+    co.value = "";
+    msg.value = "";
 
     svc.selectedIndex = 0;
-    document.getElementById('c-sub-wrap').classList.remove('show');
+    sub.selectedIndex = 0;
+
+    document.getElementById('c-sub-wrap')?.classList.remove('show');
     document.querySelectorAll('.bpill').forEach(b => b.classList.remove('sel'));
 
   } catch (err) {
-    console.error("Network error:", err);
-    alert("Erreur réseau");
+    console.error(err);
+    showToast("Erreur réseau ❌");
   }
 
-  // reset UI
+  // reset button UI
   setTimeout(() => {
     if (btn) btn.style.opacity = "1";
     if (txt) txt.textContent = "Envoyer ma demande";
     if (arr) arr.textContent = "→";
     sending = false;
-  }, 2000);
+  }, 1500);
 }
+function validateForm() {
+  const fn = document.getElementById('fn').value.trim();
+  const ln = document.getElementById('ln').value.trim();
+  const em = document.getElementById('em').value.trim();
+  const ph = document.getElementById('ph').value.trim();
+  const co = document.getElementById('co').value.trim();
+  const svc = document.getElementById('c-svc').value;
+  const sub = document.getElementById('c-sub').value;
+  const msg = document.getElementById('msg').value.trim();
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  if (!t) return;
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 4500);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[0-9+\s]{6,20}$/;
+
+  if (fn.length < 2) return showToast("Prénom requis");
+  if (ln.length < 2) return showToast("Nom requis");
+  if (!emailRegex.test(em)) return showToast("Email invalide");
+  if (!phoneRegex.test(ph)) return showToast("Téléphone invalide");
+  if (co.length < 2) return showToast("Entreprise requise");
+  if (!svc) return showToast("Choisir un service");
+  if (!sub) return showToast("Choisir un sous-service");
+  if (msg.length < 10) return showToast("Message trop court");
+
+  return true;
+}
+function showToast(message, type = "error") {
+  const container = document.getElementById("toast-container");
+
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
 }
 
 /* ════════════════════════════════════════
