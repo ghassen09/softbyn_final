@@ -1,11 +1,12 @@
 {
   "nav": {
-    "solutions": {"fr":"Solutions","en":"Solutions","ar":"الحلول"},
-    "missions":  {"fr":"Missions","en":"Missions","ar":"المهام"},
-    "about":     {"fr":"À Propos","en":"About","ar":"عن SoftByn"},
-    "quote":     {"fr":"Devis","en":"Quote","ar":"عرض سعر"},
-    "contact":   {"fr":"Contact","en":"Contact","ar":"تواصل"},
-    "cta":       {"fr":"Consultation Gratuite","en":"Free Consultation","ar":"استشارة مجانية"}
+    "solutions":     {"fr":"Solutions","en":"Solutions","ar":"الحلول"},
+    "missions":      {"fr":"Missions","en":"Missions","ar":"المهام"},
+    "realisations":  {"fr":"Réalisations","en":"Work","ar":"أعمالنا"},
+    "about":         {"fr":"À Propos","en":"About","ar":"عن SoftByn"},
+    "quote":         {"fr":"Devis","en":"Quote","ar":"عرض سعر"},
+    "contact":       {"fr":"Contact","en":"Contact","ar":"تواصل"},
+    "cta":           {"fr":"Consultation Gratuite","en":"Free Consultation","ar":"استشارة مجانية"}
   },
   "hero": {
     "badge":  {"fr":"Startup · Fondée 2026","en":"Startup · Founded 2026","ar":"شركة ناشئة · 2026"},
@@ -36,22 +37,22 @@
     "adv3b":    {"fr":"Innovation & Technologies","en":"Innovation & Technology","ar":"الابتكار والتقنية"},
     "adv3t":    {"fr":"Logiciels sur mesure pour devancer la concurrence.","en":"Custom software to stay ahead of competition.","ar":"برامج مخصصة للبقاء في المقدمة."},
     "items": {
-      "marketing":    {"fr":"Marketing Digital","en":"Digital Marketing","ar":"التسويق الرقمي"},
-      "marketing_d":  {"fr":"SEO, Google Ads, Réseaux Sociaux, Email","en":"SEO, Google Ads, Social Media, Email","ar":"SEO، إعلانات، تواصل اجتماعي"},
-      "website":      {"fr":"Site Web & E-commerce","en":"Website & E-commerce","ar":"موقع ويب وتجارة إلكترونية"},
-      "website_d":    {"fr":"Sites, boutiques en ligne, applications","en":"Sites, online stores, applications","ar":"مواقع، متاجر، تطبيقات"},
-      "design":       {"fr":"Design & Branding","en":"Design & Branding","ar":"تصميم وهوية"},
-      "design_d":     {"fr":"Identité visuelle, Logos, UI/UX","en":"Visual identity, Logos, UI/UX","ar":"هوية بصرية، شعارات، UI/UX"},
-      "automation":   {"fr":"Automatisation & IA","en":"Automation & AI","ar":"أتمتة وذكاء اصطناعي"},
-      "automation_d": {"fr":"Chatbots, IA, Dashboards automatisés","en":"Chatbots, AI, Automated dashboards","ar":"روبوتات محادثة، ذكاء اصطناعي"},
-      "saas":         {"fr":"Logiciels SaaS","en":"SaaS Software","ar":"برامج SaaS"},
-      "saas_d":       {"fr":"Apps & logiciels cloud en abonnement","en":"Cloud apps & subscription software","ar":"تطبيقات وبرامج سحابية"},
-      "products":     {"fr":"Produits Numériques","en":"Digital Products","ar":"منتجات رقمية"},
-      "products_d":   {"fr":"Templates, Cours en ligne, Ressources","en":"Templates, Online courses, Resources","ar":"قوالب، دورات، موارد رقمية"},
-      "partnerships": {"fr":"Partenariats Stratégiques","en":"Strategic Partnerships","ar":"شراكات استراتيجية"},
+      "marketing":     {"fr":"Marketing Digital","en":"Digital Marketing","ar":"التسويق الرقمي"},
+      "marketing_d":   {"fr":"SEO, Google Ads, Réseaux Sociaux, Email","en":"SEO, Google Ads, Social Media, Email","ar":"SEO، إعلانات، تواصل اجتماعي"},
+      "website":       {"fr":"Site Web & E-commerce","en":"Website & E-commerce","ar":"موقع ويب وتجارة إلكترونية"},
+      "website_d":     {"fr":"Sites, boutiques en ligne, applications","en":"Sites, online stores, applications","ar":"مواقع، متاجر، تطبيقات"},
+      "design":        {"fr":"Design & Branding","en":"Design & Branding","ar":"تصميم وهوية"},
+      "design_d":      {"fr":"Identité visuelle, Logos, UI/UX","en":"Visual identity, Logos, UI/UX","ar":"هوية بصرية، شعارات، UI/UX"},
+      "automation":    {"fr":"Automatisation & IA","en":"Automation & AI","ar":"أتمتة وذكاء اصطناعي"},
+      "automation_d":  {"fr":"Chatbots, IA, Dashboards automatisés","en":"Chatbots, AI, Automated dashboards","ar":"روبوتات محادثة، ذكاء اصطناعي"},
+      "saas":          {"fr":"Logiciels SaaS","en":"SaaS Software","ar":"برامج SaaS"},
+      "saas_d":        {"fr":"Apps & logiciels cloud en abonnement","en":"Cloud apps & subscription software","ar":"تطبيقات وبرامج سحابية"},
+      "products":      {"fr":"Produits Numériques","en":"Digital Products","ar":"منتجات رقمية"},
+      "products_d":    {"fr":"Templates, Cours en ligne, Ressources","en":"Templates, Online courses, Resources","ar":"قوالب، دورات، موارد رقمية"},
+      "partnerships":  {"fr":"Partenariats Stratégiques","en":"Strategic Partnerships","ar":"شراكات استراتيجية"},
       "partnerships_d":{"fr":"Investissement startup, Co-création","en":"Startup investment, Co-creation","ar":"استثمار في الشركات الناشئة"},
-      "ecommerce":    {"fr":"Plateformes E-commerce","en":"E-commerce Platforms","ar":"منصات التجارة الإلكترونية"},
-      "ecommerce_d":  {"fr":"Marketplaces, génération de leads","en":"Marketplaces, lead generation","ar":"منصات، توليد عملاء"}
+      "ecommerce":     {"fr":"Plateformes E-commerce","en":"E-commerce Platforms","ar":"منصات التجارة الإلكترونية"},
+      "ecommerce_d":   {"fr":"Marketplaces, génération de leads","en":"Marketplaces, lead generation","ar":"منصات، توليد عملاء"}
     }
   },
   "missions": {
@@ -80,11 +81,31 @@
     "title":    {"fr":"Notre processus","en":"Our","ar":"عمليتنا"},
     "title_em": {"fr":"éprouvé","en":"proven process","ar":"المُجرَّب"},
     "desc":     {"fr":"5 étapes claires — Marketing amène le besoin → Dev construit → Commercial vend.","en":"5 clear steps — Marketing brings the need → Dev builds → Sales validates & sells.","ar":"5 خطوات واضحة — التسويق يجلب الحاجة → التطوير يبني → المبيعات تبيع."},
-    "s1t": {"fr":"Découverte","en":"Discovery","ar":"الاكتشاف"},        "s1d": {"fr":"Comprendre vos besoins réels","en":"Understand your real needs","ar":"فهم احتياجاتك"},
-    "s2t": {"fr":"Design & MVP","en":"Design & MVP","ar":"التصميم والنموذج"}, "s2d": {"fr":"Prototype pour valider l'idée","en":"Prototype to validate idea","ar":"نموذج للتحقق من الفكرة"},
-    "s3t": {"fr":"Développement","en":"Development","ar":"التطوير"},    "s3d": {"fr":"Sprints agiles évolutifs","en":"Scalable agile sprints","ar":"سبرينت أجايل"},
-    "s4t": {"fr":"Validation","en":"Validation","ar":"التحقق"},         "s4d": {"fr":"Tests & feedback clients","en":"Testing & client feedback","ar":"اختبارات وتغذية راجعة"},
-    "s5t": {"fr":"Livraison & Scale","en":"Delivery & Scale","ar":"التسليم والتوسع"}, "s5d": {"fr":"Déploiement et croissance","en":"Deployment and growth","ar":"النشر والنمو"}
+    "s1t": {"fr":"Découverte","en":"Discovery","ar":"الاكتشاف"},
+    "s1d": {"fr":"Comprendre vos besoins réels","en":"Understand your real needs","ar":"فهم احتياجاتك"},
+    "s2t": {"fr":"Design & MVP","en":"Design & MVP","ar":"التصميم والنموذج"},
+    "s2d": {"fr":"Prototype pour valider l'idée","en":"Prototype to validate idea","ar":"نموذج للتحقق من الفكرة"},
+    "s3t": {"fr":"Développement","en":"Development","ar":"التطوير"},
+    "s3d": {"fr":"Sprints agiles évolutifs","en":"Scalable agile sprints","ar":"سبرينت أجايل"},
+    "s4t": {"fr":"Validation","en":"Validation","ar":"التحقق"},
+    "s4d": {"fr":"Tests & feedback clients","en":"Testing & client feedback","ar":"اختبارات وتغذية راجعة"},
+    "s5t": {"fr":"Livraison & Scale","en":"Delivery & Scale","ar":"التسليم والتوسع"},
+    "s5d": {"fr":"Déploiement et croissance","en":"Deployment and growth","ar":"النشر والنمو"}
+  },
+  "realisations": {
+    "tag":         {"fr":"Nos Réalisations","en":"Our Work","ar":"أعمالنا"},
+    "title":       {"fr":"Projets livrés","en":"Projects delivered","ar":"مشاريع سُلِّمت"},
+    "title_em":    {"fr":"avec succès","en":"with success","ar":"بنجاح"},
+    "desc":        {"fr":"Des solutions concrètes pour des clients réels — chaque projet reflète notre engagement qualité.","en":"Concrete solutions for real clients — each project reflects our quality commitment.","ar":"حلول ملموسة لعملاء حقيقيين — كل مشروع يعكس التزامنا بالجودة."},
+    "cta_sub":     {"fr":"Votre projet sera notre prochaine réalisation","en":"Your project will be our next success story","ar":"مشروعك سيكون إنجازنا القادم"},
+    "cta_btn":     {"fr":"Démarrer mon projet","en":"Start my project","ar":"ابدأ مشروعي"},
+    "f_all":       {"fr":"Tous","en":"All","ar":"الكل"},
+    "f_ecommerce": {"fr":"E-Commerce","en":"E-Commerce","ar":"تجارة إلكترونية"},
+    "f_saas":      {"fr":"SaaS","en":"SaaS","ar":"SaaS"},
+    "f_website":   {"fr":"Site Web","en":"Website","ar":"موقع ويب"},
+    "f_mobile":    {"fr":"Mobile","en":"Mobile","ar":"موبايل"},
+    "f_design":    {"fr":"Design","en":"Design","ar":"تصميم"},
+    "f_ai":        {"fr":"IA & Auto","en":"AI & Auto","ar":"ذكاء اصطناعي"}
   },
   "quote": {
     "tag":        {"fr":"Devis Dynamique","en":"Dynamic Quote","ar":"عرض سعر ديناميكي"},

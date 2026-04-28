@@ -49,6 +49,7 @@
   <div class="nav-links" id="navLinks">
     <a href="#solutions" id="nav-sol">Solutions</a>
     <a href="#missions"  id="nav-mis">Missions</a>
+    <a href="#realisations"  id="nav-real">Réalisations</a>
     <a href="#quote"     id="nav-quo">Devis</a>
     <a href="#contact"   id="nav-con">Contact</a>
     <a href="#about"     id="nav-abo">À Propos</a>
@@ -232,7 +233,40 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════
+     RÉALISATIONS
+══════════════════════════════════ -->
+<section id="realisations">
+  <div class="rz-head reveal">
+    <div class="s-tag" id="rz-tag">Nos Réalisations</div>
+    <h2 class="s-title" id="rz-title">Projets livrés <em>avec succès</em></h2>
+    <p class="s-desc" id="rz-desc" style="max-width:520px;margin:0 auto">
+      Des solutions concrètes pour des clients réels — chaque projet reflète notre engagement qualité.
+    </p>
+  </div>
 
+  <!-- Filtres -->
+  <div class="rz-filters reveal d1" id="rz-filters">
+    <button class="rz-filter on" data-cat="all"        id="rz-f-all">Tous</button>
+    <button class="rz-filter"    data-cat="ecommerce"  id="rz-f-ecommerce">E-Commerce</button>
+    <button class="rz-filter"    data-cat="saas"       id="rz-f-saas">SaaS</button>
+    <button class="rz-filter"    data-cat="website"    id="rz-f-website">Site Web</button>
+    <button class="rz-filter"    data-cat="mobile"     id="rz-f-mobile">Mobile</button>
+    <button class="rz-filter"    data-cat="design"     id="rz-f-design">Design</button>
+    <button class="rz-filter"    data-cat="ai"         id="rz-f-ai">IA &amp; Auto</button>
+  </div>
+
+  <!-- Grille projets — injectée par JS -->
+  <div class="rz-grid" id="rz-grid"></div>
+
+  <!-- CTA -->
+  <div class="rz-cta reveal d3">
+    <p class="rz-cta-sub" id="rz-cta-sub">Votre projet sera notre prochaine réalisation</p>
+    <a href="#contact" class="btn-main" id="rz-cta-btn">
+      Démarrer mon projet <span class="arr">→</span>
+    </a>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════
      PROCESS
@@ -365,7 +399,7 @@
 
       <div class="f2c">
         <div class="fg">
-          <label id="lbl-em" for="em">Email *</label>
+          <label id="lbl-em" for="em">Email * </label>
           <input type="email" id="em" placeholder="vous@email.com" autocomplete="email"/>
         </div>
         <div class="fg">

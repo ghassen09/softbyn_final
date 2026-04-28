@@ -1,4 +1,3 @@
-
 /* ════════════════════════════════════════
    1. APP STATE
 ════════════════════════════════════════ */
@@ -9,12 +8,127 @@ const APP = {
   chatOpen: false,
   chatFirstOpen: false,
   quote: { svcId: null, subId: null, answers: {}, base: 0, options: 0 },
-  
 };
 let sending = false;
 
 /* ════════════════════════════════════════
-   2. DATA LOADING  (fetch JSON files)
+   RÉALISATIONS DATA
+════════════════════════════════════════ */
+const PROJECTS_DATA = [
+  {
+    id: 'shoptn', cat: 'ecommerce', icon: '🛒', imgCls: 'rz-img-ecom',
+    pills: [
+      { lbl: { fr: 'E-Commerce', en: 'E-Commerce', ar: 'تجارة إلكترونية' }, cls: 'rz-pill-ecom' },
+      { lbl: { fr: 'Design',     en: 'Design',      ar: 'تصميم'           }, cls: 'rz-pill-design' }
+    ],
+    title: { fr: 'Tounexa',     en: 'Tounexa',      ar: 'Tounexa' },
+    desc:  {
+      fr: 'Marketplace multi-vendeurs avec paiements en ligne, dashboard analytics et app mobile.',
+      en: 'Multi-vendor marketplace with online payments, analytics dashboard and mobile app.',
+      ar: 'منصة متعددة البائعين مع مدفوعات إلكترونية ولوحة تحليلات وتطبيق موبايل.'
+    },
+    stats: [
+      { v: '+340%', l: { fr: 'CA en 6 mois',  en: 'Revenue in 6 months', ar: 'إيرادات في 6 أشهر' } },
+      { v: '1 200', l: { fr: 'produits',       en: 'products',            ar: 'منتج'              } },
+      { v: '4 sem.',l: { fr: 'livraison',      en: 'delivery',            ar: 'تسليم'             } }
+    ]
+  },
+  {
+    id: 'opsdesk', cat: 'saas', icon: '☁️', imgCls: 'rz-img-saas',
+    pills: [
+      { lbl: { fr: 'SaaS', en: 'SaaS', ar: 'SaaS'              }, cls: 'rz-pill-saas' },
+      { lbl: { fr: 'IA',   en: 'AI',   ar: 'ذكاء اصطناعي'      }, cls: 'rz-pill-ai'   }
+    ],
+    title: { fr: 'OpsDeski CRM', en: 'OpsDeski CRM', ar: 'OpsDeski CRM' },
+    desc:  {
+      fr: 'CRM sur mesure pour agences avec scoring IA des prospects et rapports automatiques.',
+      en: 'Custom CRM for agencies with AI prospect scoring and automated reports.',
+      ar: 'نظام CRM مخصص للوكالات مع تقييم ذكي للعملاء وتقارير آلية.'
+    },
+    stats: [
+      { v: '3×',    l: { fr: 'productivité', en: 'productivity', ar: 'إنتاجية' } },
+      { v: '850',   l: { fr: 'utilisateurs', en: 'users',        ar: 'مستخدم'  } },
+      { v: '8 sem.',l: { fr: 'livraison',    en: 'delivery',     ar: 'تسليم'   } }
+    ]
+  },
+  {
+    id: 'medpro', cat: 'website', icon: '🌐', imgCls: 'rz-img-website',
+    pills: [
+      { lbl: { fr: 'Site Web', en: 'Website', ar: 'موقع ويب' }, cls: 'rz-pill-site' },
+      { lbl: { fr: 'SEO',      en: 'SEO',     ar: 'SEO'       }, cls: 'rz-pill-ecom' }
+    ],
+    title: { fr: 'BookMed', en: 'BookMed', ar: 'BookMed  ' },
+    desc:  {
+      fr: 'Site vitrine + prise de RDV en ligne avec SEO optimisé — +210% de trafic organique.',
+      en: 'Showcase site + online booking with advanced SEO — +210% organic traffic.',
+      ar: 'موقع عرض + حجز مواعيد مع تحسين محركات البحث — +210% زيارات.'
+    },
+    stats: [
+      { v: '+210%',  l: { fr: 'trafic',    en: 'traffic',    ar: 'زيارات'  } },
+      { v: '95/100', l: { fr: 'PageSpeed', en: 'PageSpeed',  ar: 'السرعة'  } },
+      { v: '2 sem.', l: { fr: 'livraison', en: 'delivery',   ar: 'تسليم'   } }
+    ]
+  },
+  {
+    id: 'delivfast', cat: 'mobile', icon: '📱', imgCls: 'rz-img-mobile',
+    pills: [
+      { lbl: { fr: 'Mobile', en: 'Mobile', ar: 'موبايل' }, cls: 'rz-pill-mobile' },
+      { lbl: { fr: 'Design', en: 'Design', ar: 'تصميم'  }, cls: 'rz-pill-design' }
+    ],
+    title: { fr: 'DelivriFast App', en: 'DelivriFast App', ar: 'تطبيق DelivriFast' },
+    desc:  {
+      fr: 'Application iOS + Android de livraison avec tracking temps réel et paiement intégré.',
+      en: 'iOS + Android delivery app with real-time tracking and integrated payment.',
+      ar: 'تطبيق توصيل iOS + Android مع تتبع آني ودفع متكامل.'
+    },
+    stats: [
+      { v: '4.8★', l: { fr: 'App Store', en: 'App Store', ar: 'App Store' } },
+      { v: '12K',  l: { fr: 'téléch.',   en: 'downloads', ar: 'تحميل'    } },
+      { v: '10 sem.',l:{ fr: 'livraison', en: 'delivery',  ar: 'تسليم'    } }
+    ]
+  },
+  {
+    id: 'novafinance', cat: 'design', icon: '🎨', imgCls: 'rz-img-design',
+    pills: [
+      { lbl: { fr: 'Branding', en: 'Branding', ar: 'هوية'  }, cls: 'rz-pill-design' },
+      { lbl: { fr: 'UI/UX',    en: 'UI/UX',    ar: 'UI/UX'  }, cls: 'rz-pill-ecom'   }
+    ],
+    title: { fr: 'MetOva Finance', en: 'MetOva Finance', ar: ' MetOva Finance' },
+    desc:  {
+      fr: 'Identité visuelle complète + kit UI pour une fintech — logo, couleurs, typographie, composants.',
+      en: 'Complete visual identity + UI kit for a fintech — logo, colors, typography, components.',
+      ar: 'هوية بصرية كاملة + مجموعة UI لشركة fintech — شعار، ألوان، خطوط، مكونات.'
+    },
+    stats: [
+      { v: '100%', l: { fr: 'cohérence',   en: 'consistency',  ar: 'اتساق'    } },
+      { v: '6',    l: { fr: 'supports',    en: 'deliverables', ar: 'مخرجات'   } },
+      { v: '1 sem.',l:{ fr: 'livraison',   en: 'delivery',     ar: 'تسليم'    } }
+    ]
+  },
+  {
+    id: 'autoreport', cat: 'ai', icon: '🤖', imgCls: 'rz-img-ai',
+    pills: [
+      { lbl: { fr: 'IA',            en: 'AI',          ar: 'ذكاء اصطناعي' }, cls: 'rz-pill-ai'   },
+      { lbl: { fr: 'Automatisation',en: 'Automation',  ar: 'أتمتة'         }, cls: 'rz-pill-saas' }
+    ],
+    title: { fr: 'AutoBI', en: 'AutoBI', ar: 'AutoBI' },
+    desc:  {
+      fr: 'Dashboard analytique avec IA pour génération automatique de rapports et alertes prédictives.',
+      en: 'Analytics dashboard with AI for automatic report generation and predictive alerts.',
+      ar: 'لوحة تحليلات بذكاء اصطناعي لتوليد تقارير آلية وتنبيهات تنبؤية.'
+    },
+    stats: [
+      { v: '-80%', l: { fr: 'temps rapport', en: 'report time',  ar: 'وقت التقرير' } },
+      { v: '15',   l: { fr: 'intégrations',  en: 'integrations', ar: 'تكامل'        } },
+      { v: '6 sem.',l:{ fr: 'livraison',     en: 'delivery',     ar: 'تسليم'        } }
+    ]
+  }
+];
+
+let RZ_CURRENT_CAT = 'all';
+
+/* ════════════════════════════════════════
+   2. DATA LOADING
 ════════════════════════════════════════ */
 async function loadData() {
   try {
@@ -27,7 +141,6 @@ async function loadData() {
     console.log('✅ Data loaded — services:', s.services.length, 'categories');
   } catch (err) {
     console.error('❌ Data load error:', err);
-    // Fallback: show error in quote area
     const qa = document.getElementById('q-svc-grid');
     if (qa) qa.innerHTML = '<p style="color:red;padding:20px">Erreur de chargement des données. Ouvrez avec un serveur local (ex: npx serve .)</p>';
   }
@@ -36,8 +149,6 @@ async function loadData() {
 /* ════════════════════════════════════════
    3. i18n — FR / EN / AR  +  RTL
 ════════════════════════════════════════ */
-
-// Arabic Google Font injected dynamically
 function injectArabicFont() {
   if (document.getElementById('arabic-font')) return;
   const link = document.createElement('link');
@@ -50,26 +161,18 @@ function injectArabicFont() {
 function setLang(lang) {
   APP.lang = lang;
   const isAr = lang === 'ar';
-
-  // HTML dir + lang
   document.documentElement.lang = lang;
   document.documentElement.dir  = isAr ? 'rtl' : 'ltr';
   document.body.dataset.lang     = lang;
-
-  // Arabic font
   if (isAr) {
     injectArabicFont();
     document.body.style.fontFamily = "'Noto Naskh Arabic', 'Space Grotesk', sans-serif";
   } else {
     document.body.style.fontFamily = "'Space Grotesk', sans-serif";
   }
-
-  // Update lang button states
   ['fr','en','ar'].forEach(l => {
     document.getElementById('btn-' + l)?.classList.toggle('on', l === lang);
   });
-
-  // Render everything
   renderAll();
 }
 
@@ -80,12 +183,12 @@ function renderAll() {
   renderSolutions();
   renderMissions();
   renderProcess();
+  renderRealisations();
   renderQuoteHeader();
   renderAbout();
   renderContact();
   renderFooter();
   renderChatbotTexts();
-  // Re-render quote if in progress
   if (APP.quote.svcId) {
     renderServiceButtons();
     renderQuoteService(APP.quote.svcId, false);
@@ -97,7 +200,6 @@ function renderAll() {
   if (APP.quote.subId) renderQuestions();
 }
 
-// Shorthand getter: APP.i18n[section][key][lang]
 function gl(section, key) {
   const obj = APP.i18n?.[section]?.[key];
   if (!obj) return '';
@@ -106,31 +208,28 @@ function gl(section, key) {
 
 /* ── NAV ── */
 function renderNav() {
-  setText('nav-sol', gl('nav','solutions'));
-  setText('nav-mis', gl('nav','missions'));
-  setText('nav-abo', gl('nav','about'));
-  setText('nav-quo', gl('nav','quote'));
-  setText('nav-con', gl('nav','contact'));
-  setText('nav-cta', gl('nav','cta'));
+  setText('nav-sol',  gl('nav','solutions'));
+  setText('nav-mis',  gl('nav','missions'));
+  setText('nav-real', gl('nav','realisations'));
+  setText('nav-abo',  gl('nav','about'));
+  setText('nav-quo',  gl('nav','quote'));
+  setText('nav-con',  gl('nav','contact'));
+  setText('nav-cta',  gl('nav','cta'));
 }
 
 /* ── HERO ── */
 function renderHero() {
   setText('hero-badge', gl('hero','badge'));
-  // h1 construction
   const h1 = document.getElementById('hero-h1');
   if (h1) {
     if (APP.lang === 'en') {
       h1.innerHTML = `${gl('hero','h1b')} <em>${gl('hero','h1em')}</em>`;
-    } else if (APP.lang === 'ar') {
-      h1.innerHTML = `${gl('hero','h1a')} <em>${gl('hero','h1em')}</em>`;
     } else {
       h1.innerHTML = `${gl('hero','h1a')} <em>${gl('hero','h1em')}</em>`;
     }
   }
   setText('hero-sub',  gl('hero','sub'));
   setText('hero-desc', gl('hero','desc'));
-  // Buttons — preserve arrow span
   const btn1 = document.getElementById('hero-btn1');
   if (btn1) btn1.innerHTML = `${gl('hero','btn1')} <span class="arr">→</span>`;
   setText('hero-btn2', gl('hero','btn2'));
@@ -196,6 +295,77 @@ function renderProcess() {
     setText(`s${i}t`, p[`s${i}t`]?.[APP.lang] || '');
     setText(`s${i}d`, p[`s${i}d`]?.[APP.lang] || '');
   }
+}
+
+/* ════════════════════════════════════════
+   RÉALISATIONS
+════════════════════════════════════════ */
+function renderRealisations() {
+  renderRzTexts();
+  renderRzGrid();
+}
+
+function renderRzTexts() {
+  const r = APP.i18n?.realisations;
+  if (!r) return;
+  setText('rz-tag',     r.tag?.[APP.lang]     || '');
+  setText('rz-desc',    r.desc?.[APP.lang]    || '');
+  setText('rz-cta-sub', r.cta_sub?.[APP.lang] || '');
+
+  const ctaBtn = document.getElementById('rz-cta-btn');
+  if (ctaBtn) ctaBtn.innerHTML = `${r.cta_btn?.[APP.lang] || ''} <span class="arr">→</span>`;
+
+  const t = document.getElementById('rz-title');
+  if (t) t.innerHTML = `${r.title?.[APP.lang] || ''} <em>${r.title_em?.[APP.lang] || ''}</em>`;
+
+  /* Filtre labels */
+  ['all','ecommerce','saas','website','mobile','design','ai'].forEach(c => {
+    setText('rz-f-' + c, r['f_' + c]?.[APP.lang] || '');
+  });
+}
+
+function initRzFilters() {
+  document.querySelectorAll('.rz-filter').forEach(btn => {
+    btn.addEventListener('click', function () {
+      RZ_CURRENT_CAT = this.dataset.cat;
+      document.querySelectorAll('.rz-filter').forEach(b => b.classList.remove('on'));
+      this.classList.add('on');
+      renderRzGrid();
+    });
+  });
+}
+
+function renderRzGrid() {
+  const grid = document.getElementById('rz-grid');
+  if (!grid) return;
+  const lang = APP.lang;
+  const filtered = RZ_CURRENT_CAT === 'all'
+    ? PROJECTS_DATA
+    : PROJECTS_DATA.filter(p => p.cat === RZ_CURRENT_CAT);
+
+  grid.innerHTML = filtered.map((p, idx) => `
+    <div class="rz-card reveal" style="transition-delay:${idx * 60}ms">
+      <div class="rz-card-img ${p.imgCls}">${p.icon}</div>
+      <div class="rz-card-body">
+        <div class="rz-card-pills">
+          ${p.pills.map(pill => `<span class="rz-pill ${pill.cls}">${pill.lbl[lang] || pill.lbl.fr}</span>`).join('')}
+        </div>
+        <div class="rz-card-title">${p.title[lang] || p.title.fr}</div>
+        <div class="rz-card-desc">${p.desc[lang] || p.desc.fr}</div>
+        <div class="rz-card-stats">
+          ${p.stats.map(s => `
+            <div class="rz-stat">
+              <div class="rz-stat-v">${s.v}</div>
+              <div class="rz-stat-l">${s.l[lang] || s.l.fr}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  /* Déclenche l'animation reveal */
+  setTimeout(() => grid.querySelectorAll('.rz-card').forEach(c => c.classList.add('in')), 50);
 }
 
 /* ── QUOTE HEADER ── */
@@ -283,7 +453,6 @@ function renderChatbotTexts() {
   for (let i = 1; i <= 5; i++) {
     setText(`cb-qr${i}`, cb[`qr${i}`]?.[APP.lang] || '');
   }
-  // Update welcome message if visible
   const wb = document.getElementById('cb-welcome-bub');
   if (wb) wb.textContent = cb.welcome?.[APP.lang] || wb.textContent;
 }
@@ -309,7 +478,6 @@ function initCursor() {
   const dot  = document.getElementById('cur');
   const ring = document.getElementById('ring');
   if (!dot || !ring) return;
-  // Hide cursor on touch devices
   if ('ontouchstart' in window) { dot.style.display = 'none'; ring.style.display = 'none'; return; }
   document.addEventListener('mousemove', e => {
     dot.style.left  = (e.clientX - 4) + 'px';
@@ -318,7 +486,7 @@ function initCursor() {
     ring.style.top  = e.clientY + 'px';
   });
   document.addEventListener('mouseover', e => {
-    const el = e.target.closest('a,button,.svc-btn,.sol-item,.mc,.val-item,.c-info,.sub-btn,.q-opt,.q-tog-btn');
+    const el = e.target.closest('a,button,.svc-btn,.sol-item,.mc,.val-item,.c-info,.sub-btn,.q-opt,.q-tog-btn,.rz-card,.rz-filter');
     if (el) {
       dot.style.transform    = 'scale(2.5)';
       ring.style.borderColor = 'rgba(37,99,235,.7)';
@@ -342,7 +510,6 @@ function initScroll() {
     if (pb)  pb.style.transform = `scaleX(${h > 0 ? s / h : 0})`;
     if (nav) nav.classList.toggle('compact', s > 80);
     if (btt) btt.classList.toggle('show', s > 400);
-    // Active nav
     document.querySelectorAll('section[id]').forEach(sec => {
       if (s >= sec.offsetTop - 120 && s < sec.offsetTop + sec.offsetHeight - 120) {
         document.querySelectorAll('.nav-links a').forEach(a =>
@@ -368,6 +535,17 @@ function initReveal() {
     { threshold: .08, rootMargin: '0px 0px -40px 0px' }
   );
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+}
+
+/* Ré-observe les nouvelles cartes injectées dynamiquement */
+function observeNewReveal() {
+  const ro = new IntersectionObserver(
+    entries => entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 60);
+    }),
+    { threshold: .08, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('#rz-grid .reveal:not(.in)').forEach(el => ro.observe(el));
 }
 
 /* ════════════════════════════════════════
@@ -400,59 +578,45 @@ function renderServiceButtons() {
     </button>
   `).join('');
 }
+
 function selectQService(svcId) {
   APP.quote.svcId   = svcId;
   APP.quote.subId   = null;
   APP.quote.answers = {};
   APP.quote.base    = 0;
   APP.quote.options = 0;
-
   renderServiceButtons();
   renderQuoteService(svcId, true);
   setStepActive(1);
-
-  // ✅ FIX + LOCK dans contact form
   syncAndLockContactService(svcId);
 }
+
 function syncAndLockContactService(svcId, subId = null) {
   const cSvc = document.getElementById('c-svc');
   const cSub = document.getElementById('c-sub');
   const wrap = document.getElementById('c-sub-wrap');
-
   if (!APP.services?.services) return;
-
-  // ── SERVICE ──
   if (cSvc) {
     cSvc.value = svcId;
-
-    // 🔒 LOCK SERVICE (empêche changement)
     cSvc.disabled = true;
     cSvc.style.opacity = "0.7";
     cSvc.style.pointerEvents = "none";
-
     buildContactSubSelect(svcId);
   }
-
-  // ── SUB SERVICE ──
   if (subId && cSub) {
-    setTimeout(() => {
-      cSub.value = subId;
-    }, 50);
-
+    setTimeout(() => { cSub.value = subId; }, 50);
     if (wrap) wrap.classList.add('show');
-
-    // 🔒 LOCK SUB SERVICE aussi
     cSub.disabled = true;
     cSub.style.opacity = "0.7";
     cSub.style.pointerEvents = "none";
   }
 }
+
 function renderQuoteService(svcId, animate) {
   const svc = APP.services?.services?.find(s => s.id === svcId);
   if (!svc) return;
   const subArea = document.getElementById('q-sub-area');
   if (!subArea) return;
-
   subArea.innerHTML = `
     <span class="sub-label">${gl('quote','step2')}</span>
     <div class="sub-grid">
@@ -463,70 +627,36 @@ function renderQuoteService(svcId, animate) {
         </button>
       `).join('')}
     </div>`;
-
   subArea.style.display = 'block';
   if (animate) { subArea.style.animation = 'none'; void subArea.offsetWidth; subArea.style.animation = 'fadeIn .3s ease'; }
-
   const qArea = document.getElementById('q-area');
   if (qArea) qArea.innerHTML = `<div class="q-empty">${gl('quote','empty_sub')}</div>`;
   const est = document.getElementById('estimate-box');
   if (est) est.style.display = 'none';
 }
+
 function selectSubService(svcId, subId) {
   APP.quote.subId   = subId;
   APP.quote.answers = {};
-
   renderQuoteService(svcId, false);
   renderQuestions();
   setStepActive(2);
-
-  // ✅ FIX + LOCK dans contact form
   syncAndLockContactService(svcId, subId);
-}
-function syncContactService(svcId, subId = null) {
-  const cSvc = document.getElementById('c-svc');
-  const cSub = document.getElementById('c-sub');
-  const wrap = document.getElementById('c-sub-wrap');
-
-  if (!APP.services?.services) return;
-
-  // ── SERVICE ──
-  if (cSvc) {
-    cSvc.value = svcId;
-    buildContactSubSelect(svcId);
-  }
-
-  // ── SUB SERVICE ──
-  if (subId && cSub) {
-    const svc = APP.services.services.find(s => s.id === svcId);
-    const sub = svc?.subServices?.find(s => s.id === subId);
-
-    if (sub) {
-      setTimeout(() => {
-        cSub.value = subId;
-      }, 50);
-    }
-
-    if (wrap) wrap.classList.add('show');
-  }
 }
 
 function renderQuestions() {
   const svc = APP.services?.services?.find(s => s.id === APP.quote.svcId);
   const sub = svc?.subServices?.find(s => s.id === APP.quote.subId);
   if (!svc || !sub) return;
-
   const qArea = document.getElementById('q-area');
   if (!qArea) return;
   qArea.innerHTML = '';
   setStepActive(3);
-
   sub.questions.forEach((qId, idx) => {
     const qDef = APP.services.questions?.[qId];
     if (!qDef) return;
     const label = qDef.label?.[APP.lang] || qDef.label?.fr || qId;
     let inner = '';
-
     if (qDef.type === 'select') {
       inner = `<div class="q-select-opts">
         ${qDef.options.map(opt => `
@@ -555,14 +685,12 @@ function renderQuestions() {
           </button>`).join('')}
       </div>`;
     }
-
     const item = document.createElement('div');
     item.className = 'q-item reveal';
     item.innerHTML = `<div class="q-item-label">${label}</div>${inner}`;
     qArea.appendChild(item);
     setTimeout(() => item.classList.add('in'), 50 + idx * 40);
   });
-
   updateEstimate();
 }
 
@@ -594,17 +722,14 @@ function updateEstimate() {
   const svc = APP.services?.services?.find(s => s.id === APP.quote.svcId);
   const sub = svc?.subServices?.find(s => s.id === APP.quote.subId);
   if (!svc || !sub) return;
-
   let multiplier = 1;
   let addTotal   = 0;
   const rows = [];
-
   sub.questions.forEach(qId => {
     const qDef = APP.services.questions?.[qId];
     const ans  = APP.quote.answers[qId];
     if (!ans || !qDef) return;
     const label = qDef.label?.[APP.lang] || qDef.label?.fr || qId;
-
     if (qDef.type === 'select') {
       const opt = qDef.options.find(o => o.value === ans);
       if (!opt) return;
@@ -631,12 +756,10 @@ function updateEstimate() {
       });
     }
   });
-
   const finalBase = Math.round(sub.basePrice * multiplier);
   const total     = finalBase + addTotal;
   APP.quote.base    = finalBase;
   APP.quote.options = addTotal;
-
   let box = document.getElementById('estimate-box');
   if (!box) {
     box = document.createElement('div');
@@ -645,12 +768,10 @@ function updateEstimate() {
     document.getElementById('q-area')?.after(box);
   }
   box.style.display = 'block';
-
   const subLbl = sub.label?.[APP.lang] || sub.label?.fr || sub.id;
   const rowsHtml = rows.map(r =>
     `<div class="est-row"><span class="er-l">${r.l}</span><span class="er-v">${r.v}</span></div>`
   ).join('');
-
   box.innerHTML = `
     <div class="est-header">
       <h3>${gl('quote','est_title')}</h3>
@@ -669,7 +790,6 @@ function updateEstimate() {
     </div>
     <p class="est-note">${gl('quote','disclaimer')}</p>
     <button class="est-cta" onclick="goTo('contact')">${gl('quote','cta')}</button>`;
-
   const tv = document.getElementById('est-total-val');
   if (tv) { tv.classList.remove('bump'); void tv.offsetWidth; tv.classList.add('bump'); }
 }
@@ -743,8 +863,37 @@ function selBudget(el) {
   document.querySelectorAll('.bpill').forEach(b => b.classList.remove('sel'));
   el.classList.add('sel');
 }
+function showEmailError(input, message) {
+  if (!input) return;
 
-/* ── FORM SUBMIT → Supabase ── */
+  input.style.border = "2px solid #e74c3c";
+
+  const container = input.closest(".fg") || input.parentNode;
+
+  let msg = container.querySelector(".email-error");
+
+  if (!msg) {
+    msg = document.createElement("div");
+    msg.className = "email-error";
+    msg.style.color = "#e74c3c";
+    msg.style.fontSize = "12px";
+    msg.style.marginTop = "5px";
+    container.appendChild(msg);
+  }
+
+  msg.textContent = message;
+}
+
+function clearEmailError(input) {
+  if (!input) return;
+
+  input.style.border = "";
+
+  const container = input.closest(".fg") || input.parentNode;
+  const msg = container.querySelector(".email-error");
+
+  if (msg) msg.remove();
+}
 async function sendForm() {
   if (sending) return;
   sending = true;
@@ -765,7 +914,11 @@ async function sendForm() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[0-9+\s]{6,20}$/;
 
-  // ❌ VALIDATION (TOAST)
+  // 🔹 RESET email error au début
+  clearEmailError(em);
+
+  // ❌ VALIDATION
+
   if (fn.value.trim().length < 2) {
     showToast("Prénom requis");
     sending = false;
@@ -778,10 +931,23 @@ async function sendForm() {
     return;
   }
 
-  if (!emailRegex.test(em.value.trim())) {
+  // 🔥 EMAIL (MESSAGE SOUS INPUT)
+  const emailValue = em.value.trim();
+
+  if (emailValue === "") {
+    showEmailError(em, "Email requis");
+    showToast("Email requis");
+    sending = false;
+    return;
+  }
+
+  if (!emailRegex.test(emailValue)) {
+    showEmailError(em, "Exemple : SoftByn@gmail.com");
     showToast("Email invalide");
     sending = false;
     return;
+  } else {
+    clearEmailError(em);
   }
 
   if (!phoneRegex.test(ph.value.trim())) {
@@ -883,7 +1049,7 @@ async function sendForm() {
     showToast("Erreur réseau ❌");
   }
 
-  // reset button UI
+  // reset UI
   setTimeout(() => {
     if (btn) btn.style.opacity = "1";
     if (txt) txt.textContent = "Envoyer ma demande";
@@ -891,52 +1057,65 @@ async function sendForm() {
     sending = false;
   }, 1500);
 }
-function validateForm() {
-  const fn = document.getElementById('fn').value.trim();
-  const ln = document.getElementById('ln').value.trim();
-  const em = document.getElementById('em').value.trim();
-  const ph = document.getElementById('ph').value.trim();
-  const co = document.getElementById('co').value.trim();
-  const svc = document.getElementById('c-svc').value;
-  const sub = document.getElementById('c-sub').value;
-  const msg = document.getElementById('msg').value.trim();
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9+\s]{6,20}$/;
-
-  if (fn.length < 2) return showToast("Prénom requis");
-  if (ln.length < 2) return showToast("Nom requis");
-  if (!emailRegex.test(em)) return showToast("Email invalide");
-  if (!phoneRegex.test(ph)) return showToast("Téléphone invalide");
-  if (co.length < 2) return showToast("Entreprise requise");
-  if (!svc) return showToast("Choisir un service");
-  if (!sub) return showToast("Choisir un sous-service");
-  if (msg.length < 10) return showToast("Message trop court");
-
-  return true;
-}
 function showToast(message, type = "error") {
   const container = document.getElementById("toast-container");
-
   const toast = document.createElement("div");
   toast.className = `toast ${type}`;
   toast.textContent = message;
-
   container.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+function setFieldError(input, message) {
+  if (!input) return;
 
-  setTimeout(() => {
-    toast.remove();
-  }, 3000);
+  input.style.border = "2px solid #e74c3c";
+
+  let msg = input.parentNode.querySelector(".field-error");
+
+  if (!msg) {
+    msg = document.createElement("div");
+    msg.className = "field-error";
+    msg.style.color = "#e74c3c";
+    msg.style.fontSize = "12px";
+    msg.style.marginTop = "4px";
+    input.parentNode.appendChild(msg);
+  }
+
+  msg.textContent = message;
 }
 
+function clearFieldError(input) {
+  if (!input) return;
+
+  input.style.border = "";
+
+  const msg = input.parentNode.querySelector(".field-error");
+  if (msg) msg.remove();
+}
+function clearEmailError(input) {
+  if (!input) return;
+
+  // reset border
+  input.style.border = "";
+
+  // récupérer le bon container (.fg ou parent)
+  const container = input.closest(".fg") || input.parentNode;
+
+  // chercher le message
+  const msg = container.querySelector(".email-error");
+
+  // supprimer s’il existe
+  if (msg) {
+    msg.remove();
+  }
+}
 /* ════════════════════════════════════════
-   10. CHATBOT  (auto-open 5s)
+   10. CHATBOT
 ════════════════════════════════════════ */
 function initChatbot() {
   const delay = window.ENV?.CHATBOT_OPEN_DELAY ?? 5000;
-  setTimeout(() => {
-    if (!APP.chatOpen) openChat();
-  }, delay);
+  setTimeout(() => { if (!APP.chatOpen) openChat(); }, delay);
 }
 
 function openChat() {
@@ -947,7 +1126,6 @@ function openChat() {
   if (badge) badge.style.display = 'none';
   const fab = document.getElementById('cbFab');
   if (fab) fab.innerHTML = '✕';
-  // Timestamp on welcome message
   if (!APP.chatFirstOpen) {
     APP.chatFirstOpen = true;
     const wb = document.getElementById('cb-welcome-bub');
@@ -1040,11 +1218,12 @@ function showTyping(show) {
    INIT
 ════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', async () => {
-  await loadData();          // ← JSON chargés en premier
-  setLang(APP.lang);         // ← puis traductions appliquées
+  await loadData();
+  setLang(APP.lang);
   initCursor();
   initScroll();
   initReveal();
   initNav();
-  initChatbot();             // ← chatbot auto-open après 5s
+  initRzFilters();
+  initChatbot();
 });
