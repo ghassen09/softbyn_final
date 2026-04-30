@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/css/intlTelInput.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/js/intlTelInput.min.js"></script>
 </head>
 <div id="toast-container"></div>
 <body>
@@ -48,7 +50,7 @@
 
   <div class="nav-links" id="navLinks">
     <a href="#solutions" id="nav-sol">Solutions</a>
-    <a href="#missions"  id="nav-mis">Missions</a>
+    <!--<a href="#missions"  id="nav-mis">Missions</a>-->
     <a href="#realisations"  id="nav-real">Réalisations</a>
     <a href="#quote"     id="nav-quo">Devis</a>
     <a href="#contact"   id="nav-con">Contact</a>
@@ -69,12 +71,12 @@
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-badges">
-      <div class="h-eye"><span class="hdot"></span><span id="hero-badge">Startup · Fondée 2026</span></div>
+      <div class="h-eye"><span class="hdot"></span><span id="hero-badge"> Entreprise · Fondée 2026</span></div>
       <div class="h-year">🚀 2026</div>
     </div>
     <h1 class="hero-h1" id="hero-h1">Solutions à <em> 360°</em></h1>
     <p class="hero-sub"  id="hero-sub">pour votre Entreprise</p>
-    <p class="hero-desc" id="hero-desc">SoftByn est une startup qui combine Agence Digitale et Tech Studio pour transformer vos besoins en produits digitaux performants.</p>
+    <p class="hero-desc" id="hero-desc">SoftByn est une entreprise qui combine Agence Digitale et Tech Studio pour transformer vos besoins en produits digitaux performants.</p>
     <div class="hero-btns">
       <a href="#solutions" class="btn-main" id="hero-btn1">Découvrir nos solutions <span class="arr">→</span></a>
       <a href="#contact"   class="btn-ghost" id="hero-btn2">1ère Consultation Gratuite 🎁</a>
@@ -172,7 +174,7 @@
     <span class="sol-adv-title" id="sol-adv-title">✅ Vos Avantages</span>
     <div class="adv-list">
       <div class="adv-item"><div class="adv-chk">✓</div><div>
-        <strong id="sol-adv1b">Augmentation du CA</strong> –
+        <strong id="sol-adv1b">Augmentation du revenus</strong> –
         <span   id="sol-adv1t">Stratégies performantes pour booster vos ventes.</span>
       </div></div>
       <div class="adv-item"><div class="adv-chk">✓</div><div>
@@ -191,6 +193,7 @@
 <!-- ══════════════════════════════════
      MISSIONS
 ══════════════════════════════════ -->
+<!--
 <section id="missions">
   <div class="reveal" style="text-align:center;margin-bottom:14px">
     <div class="s-tag" id="mis-tag">Notre ADN</div>
@@ -231,7 +234,7 @@
       </ul>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ══════════════════════════════════
      RÉALISATIONS
@@ -368,7 +371,7 @@
         </div>
         <div class="c-info">
           <div class="c-ico">💼</div>
-          <div><h5>LinkedIn</h5><p><a href="linkedin.com">/company/softbyn</a></p></div>
+          <div><h5>LinkedIn</h5><p><a href="linkedin.com">softbyn</a></p></div>
         </div>
         <div class="c-info">
           <div class="c-ico">⏰</div>
@@ -407,6 +410,7 @@
           <input type="tel" id="ph" placeholder="+XX XX XXX XXX" autocomplete="tel"/>
         </div>
       </div>
+      
 
       <div class="fg">
         <label id="lbl-co" for="co">Entreprise *</label>
@@ -483,9 +487,9 @@
     <!-- Content -->
     <div class="reveal d2">
       <div class="s-tag" id="abo-tag">À Propos</div>
-      <h2 class="s-title" id="abo-title">Une startup qui <em>construit l'avenir</em></h2>
+      <h2 class="s-title" id="abo-title">Une entreprise qui <em>construit l'avenir</em></h2>
       <p class="s-desc"   id="abo-desc">
-        Fondée en 2026, SoftByn est une startup avec une mission claire : comprendre les besoins
+        Fondée en 2026, SoftByn est une entreprise avec une mission claire : comprendre les besoins
         réels des clients et les transformer en produits digitaux performants.
       </p>
       <div class="vals">
@@ -525,7 +529,7 @@
         </svg>
         <span class="logo-name" style="background:linear-gradient(135deg,#00CFFF,#2563EB,#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">SoftByn</span>
       </a>
-      <p id="ft-desc">Startup fondée en 2026. Agence Digitale + Tech Studio. Solutions 360°.</p>
+      <p id="ft-desc">Entreprise fondée en 2026. Agence Digitale + Tech Studio. Solutions 360°.</p>
       <div class="socials">
         <a href="#" class="soc" aria-label="LinkedIn">in</a>
         <a href="#" class="soc" aria-label="X">𝕏</a>
@@ -558,7 +562,7 @@
       <h5 id="ft-col3">Entreprise</h5>
       <ul>
         <li><a href="#about">À Propos</a></li>
-        <li><a href="#missions">Missions</a></li>
+       <!-- <li><a href="#missions">Missions</a></li>-->
         <li><a href="#quote">Devis</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>

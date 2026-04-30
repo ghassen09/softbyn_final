@@ -950,11 +950,14 @@ async function sendForm() {
     clearEmailError(em);
   }
 
-  if (!phoneRegex.test(ph.value.trim())) {
-    showToast("Téléphone invalide");
-    sending = false;
-    return;
-  }
+if (!iti.isValidNumber()) {
+  showToast("Numéro invalide");
+  ph.style.border = "2px solid #e74c3c";
+  sending = false;
+  return;
+} else {
+  ph.style.border = "";
+}
 
   if (co.value.trim().length < 2) {
     showToast("Entreprise requise");
@@ -974,11 +977,7 @@ async function sendForm() {
     return;
   }
 
-  if (msg.value.trim().length < 10) {
-    showToast("Message trop court");
-    sending = false;
-    return;
-  }
+
 
   // 🔄 UI loading
   if (btn) btn.style.opacity = ".7";
@@ -990,7 +989,7 @@ async function sendForm() {
     prenom: fn.value.trim(),
     nom: ln.value.trim(),
     email: em.value.trim(),
-    tel: ph.value.trim(),
+    tel: iti.getNumber(),
     company: co.value.trim(),
     service: svc.value,
     sub_service: sub.value,
@@ -1034,7 +1033,7 @@ async function sendForm() {
     fn.value = "";
     ln.value = "";
     em.value = "";
-    ph.value = "";
+iti.setNumber("");
     co.value = "";
     msg.value = "";
 
@@ -1213,7 +1212,21 @@ function showTyping(show) {
   t.classList.toggle('show', show);
   if (show) document.getElementById('cb-msgs').scrollTop = 99999;
 }
+const input = document.querySelector("#ph");
 
+const iti = window.intlTelInput(input, {
+  initialCountry: "auto",
+  geoIpLookup: function(success, failure) {
+    fetch("https://ipapi.co/json")
+      .then(res => res.json())
+      .then(data => success(data.country_code))
+      .catch(() => success("tn"));
+  },
+  utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.0.0/build/js/utils.js"
+});
+function getPhoneNumber() {
+  return iti.getNumber(); // ex: +21612345678
+}
 /* ════════════════════════════════════════
    INIT
 ════════════════════════════════════════ */
