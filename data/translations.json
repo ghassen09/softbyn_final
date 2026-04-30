@@ -5,11 +5,11 @@
       "en": "Solutions",
       "ar": "الحلول"
     },
-    "missions": {
-      "fr": "Missions",
-      "en": "Missions",
-      "ar": "المهام"
-    },
+    "realisations": {
+  "fr": "Réalisations",
+  "en": "Projects",
+  "ar": "أعمالنا"
+},
     "about": {
       "fr": "À Propos",
       "en": "About",
@@ -17,7 +17,7 @@
     },
     "quote": {
       "fr": "Devis",
-      "en": "Quote",
+      "en": "Estimate",
       "ar": "عرض سعر"
     },
     "contact": {
