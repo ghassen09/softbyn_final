@@ -129,11 +129,11 @@
       "en": "✅ Your Benefits",
       "ar": "✅ مزاياك"
     },
-    "adv1b": {
-      "fr": "Augmentation du CA",
-      "en": "Revenue Growth",
-      "ar": "زيادة رقم الأعمال"
-    },
+   "adv1b": {
+  "fr": "Augmentation des revenus",
+  "en": "Revenue Growth",
+  "ar": "زيادة الإيرادات"
+},
     "adv1t": {
       "fr": "Stratégies performantes pour booster vos ventes.",
       "en": "High-performance strategies to boost your sales.",
